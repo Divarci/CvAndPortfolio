@@ -17,5 +17,7 @@ namespace CvAndPortfolio.Models.Entity
         public byte ID { get; set; }
         public string TITLE { get; set; }
         public string URL { get; set; }
+        public string ACLASS { get; set; }
+        public string ICLASS { get; set; }
     }
 }

@@ -1,0 +1,20 @@
+﻿@using CvAndPortfolio.Models.Entity
+@model List<TBLPORTFOLIO>
+
+<!-- ======= Portfolio Section ======= -->
+<section id="portfolio" class="portfolio section-bg">
+    <div class="container">
+        <div class="section-title">
+            <h2>Portfolio</h2>
+            @foreach (var item in Model)
+            {
+                <p>@item.DESCRIPTION</p>
+            }
+        </div>
+
+        @Html.Action("PortfolioCategory")
+        @Html.Action("PortfolioStudy")
+
+
+    </div>
+</section><!-- End Portfolio Section -->

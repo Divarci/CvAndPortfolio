@@ -1,0 +1,11 @@
+﻿@using CvAndPortfolio.Models.Entity
+@model List<TBLSOCIALMEDIA>
+
+
+<div class="social-links mt-3 text-center">
+    @foreach (var item in Model)
+    {
+        <a href="@item.URL" class="@item.ACLASS"><i class="@item.ICLASS"></i></a>
+    }
+
+</div>

@@ -14,10 +14,20 @@ namespace CvAndPortfolio.Models.Entity
     
     public partial class TBLSTUDY
     {
-        public byte ID { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public TBLSTUDY()
+        {
+            this.TBLSTUDYPICs = new HashSet<TBLSTUDYPIC>();
+        }
+    
+        public int ID { get; set; }
+        public string TITLE { get; set; }
+        public string DESCRIPTION { get; set; }
         public string PICTURL { get; set; }
         public Nullable<byte> CATEGORY { get; set; }
     
         public virtual TBLCATEGORY TBLCATEGORY { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<TBLSTUDYPIC> TBLSTUDYPICs { get; set; }
     }
 }

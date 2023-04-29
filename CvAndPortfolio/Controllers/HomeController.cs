@@ -15,7 +15,6 @@ namespace CvAndPortfolio.Controllers
             var values = db.TBLABOUTs.ToList();
             return View(values);
         }
-
         public PartialViewResult Facts()
         {
             var values = db.TBLFACTDESCRIPTIONs.ToList();
@@ -50,6 +49,44 @@ namespace CvAndPortfolio.Controllers
         public PartialViewResult Experience()
         {
             var values = db.TBLEXPERIENCEs.ToList();
+            return PartialView(values);
+        }
+        public PartialViewResult Portfolio()
+        {
+            var values = db.TBLPORTFOLIOs.ToList();
+            return PartialView(values);
+        }
+
+        public PartialViewResult PortfolioCategory()
+        {
+            var values = db.TBLCATEGORies.ToList();
+            return PartialView(values);
+        }
+        public PartialViewResult PortfolioStudy()
+        {
+            var values = db.TBLSTUDies.ToList();
+            return PartialView(values);
+        }
+
+        public ActionResult PortfolioDt(TBLSTUDY p)
+        {
+            var values = db.TBLSTUDies.Where(x => x.ID == p.ID).ToList();
+            return View(values);
+        }
+        public PartialViewResult StudyPics(TBLSTUDY p)
+        {
+            var values = db.TBLSTUDYPICs.Where(x => x.STUDYID == p.ID).ToList();
+            return PartialView(values);
+        }
+
+        public PartialViewResult Contact()
+        {
+            var values = db.TBLCONTACTs.ToList();
+            return PartialView(values);
+        }
+        public PartialViewResult LayoutPartial()
+        {
+            var values = db.TBLSOCIALMEDIAs.ToList();
             return PartialView(values);
         }
     }

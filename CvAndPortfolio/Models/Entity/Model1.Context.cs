@@ -26,18 +26,19 @@ namespace CvAndPortfolio.Models.Entity
         }
     
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
-        public virtual DbSet<TBLABOUT> TBLABOUTs { get; set; }
         public virtual DbSet<TBLCATEGORY> TBLCATEGORies { get; set; }
         public virtual DbSet<TBLCERTIFICATE> TBLCERTIFICATEs { get; set; }
-        public virtual DbSet<TBLCONTACT> TBLCONTACTs { get; set; }
         public virtual DbSet<TBLEDUCATION> TBLEDUCATIONs { get; set; }
         public virtual DbSet<TBLEXPERIENCE> TBLEXPERIENCEs { get; set; }
         public virtual DbSet<TBLFACT> TBLFACTs { get; set; }
         public virtual DbSet<TBLFACTDESCRIPTION> TBLFACTDESCRIPTIONs { get; set; }
         public virtual DbSet<TBLPORTFOLIO> TBLPORTFOLIOs { get; set; }
         public virtual DbSet<TBLRESUME> TBLRESUMEs { get; set; }
+        public virtual DbSet<TBLSKILL> TBLSKILLs { get; set; }
         public virtual DbSet<TBLSOCIALMEDIA> TBLSOCIALMEDIAs { get; set; }
         public virtual DbSet<TBLSTUDY> TBLSTUDies { get; set; }
-        public virtual DbSet<TBLSKILL> TBLSKILLs { get; set; }
+        public virtual DbSet<TBLSTUDYPIC> TBLSTUDYPICs { get; set; }
+        public virtual DbSet<TBLABOUT> TBLABOUTs { get; set; }
+        public virtual DbSet<TBLCONTACT> TBLCONTACTs { get; set; }
     }
 }

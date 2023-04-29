@@ -12,13 +12,13 @@ namespace CvAndPortfolio.Models.Entity
     using System;
     using System.Collections.Generic;
     
-    public partial class TBLCONTACT
+    public partial class TBLSTUDYPIC
     {
         public byte ID { get; set; }
-        public string DESCRIPTION { get; set; }
-        public string MAPCOOR { get; set; }
-        public Nullable<byte> ABOUTID { get; set; }
+        public string PICURL { get; set; }
+        public string TITLE { get; set; }
+        public Nullable<int> STUDYID { get; set; }
     
-        public virtual TBLABOUT TBLABOUT { get; set; }
+        public virtual TBLSTUDY TBLSTUDY { get; set; }
     }
 }
