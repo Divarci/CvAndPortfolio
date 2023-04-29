@@ -368,6 +368,10 @@
     <Content Include="Views\Home\Facts.cshtml" />
     <Content Include="Views\Home\PartTwoFacts.cshtml" />
     <Content Include="Views\Home\Skills.cshtml" />
+    <Content Include="Views\Home\Resume.cshtml" />
+    <Content Include="Views\Home\Certificate.cshtml" />
+    <Content Include="Views\Home\Education.cshtml" />
+    <Content Include="Views\Home\Experience.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

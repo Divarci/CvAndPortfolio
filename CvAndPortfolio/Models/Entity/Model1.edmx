@@ -112,7 +112,7 @@
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="DESCRIPTION" Type="varchar" MaxLength="500" />
+          <Property Name="DESCRIPTION" Type="varchar(max)" />
         </EntityType>
         <EntityType Name="TBLSKILL">
           <Key>
@@ -325,7 +325,7 @@
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="DESCRIPTION" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="DESCRIPTION" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="TBLSOCIALMEDIA">
           <Key>
@@ -545,7 +545,7 @@
     <Options>
       <DesignerInfoPropertySet>
         <DesignerProperty Name="ValidateOnBuild" Value="true" />
-        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
         <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
         <DesignerProperty Name="UseLegacyProvider" Value="false" />
         <DesignerProperty Name="CodeGenerationStrategy" Value="None" />

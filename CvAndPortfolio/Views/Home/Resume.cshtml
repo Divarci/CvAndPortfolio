@@ -1,0 +1,32 @@
+﻿@using CvAndPortfolio.Models.Entity
+@model List<TBLRESUME> 
+
+ <!-- ======= Resume Section ======= -->
+<section id="resume" class="resume">
+    <div class="container">
+
+        <div class="section-title">
+            <h2>Resume</h2>
+            @foreach (var item in Model )
+            {
+                <p>@item.DESCRIPTION</p>
+            }
+
+        </div>
+        
+        <div class="row">
+            <div class="col-lg-6" data-aos="fade-up">
+                <h3 class="resume-title">Certificates</h3>
+                @Html.Action("Certificate")
+                
+                <h3 class="resume-title">Education</h3>
+                @Html.Action("Education")
+            </div>
+            <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
+                <h3 class="resume-title">Experience</h3>
+                @Html.Action("Experience")
+            </div>
+        </div>
+
+    </div>
+</section><!-- End Resume Section -->

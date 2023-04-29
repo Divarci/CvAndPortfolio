@@ -1,0 +1,15 @@
+﻿@using CvAndPortfolio.Models.Entity
+@model List<TBLCERTIFICATE>
+
+
+@foreach (var item in Model)
+{
+    <div class="resume-item pb-0">
+        <h4>@item.TITLE</h4>
+        <h5>@item.DATE</h5>
+        <p><em>@item.LOCATION</em></p>
+        <p>@item.DESCRIPTION</p>
+        <br />
+    </div>
+}
+
