@@ -1,0 +1,566 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="PortfolioAndCvModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="TBLABOUT">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NAMESURNAME" Type="varchar" MaxLength="100" />
+          <Property Name="DESCRIPTION" Type="varchar" MaxLength="500" />
+          <Property Name="TITLE" Type="varchar" MaxLength="100" />
+          <Property Name="SUBTITLE" Type="varchar" MaxLength="100" />
+          <Property Name="ADDRESS" Type="varchar" MaxLength="300" />
+          <Property Name="MOBILE" Type="varchar" MaxLength="30" />
+          <Property Name="RELOCATION" Type="bit" />
+          <Property Name="AGE" Type="varchar" MaxLength="3" />
+          <Property Name="DEGREE" Type="varchar" MaxLength="30" />
+          <Property Name="EMAIL" Type="varchar" MaxLength="100" />
+          <Property Name="SUBDESCRIPTION" Type="varchar" MaxLength="500" />
+          <Property Name="PICURL" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="TBLCATEGORY">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CATEGORY" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="TBLCERTIFICATE">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TITLE" Type="varchar" MaxLength="50" />
+          <Property Name="DATE" Type="varchar" MaxLength="30" />
+          <Property Name="LOCATION" Type="varchar" MaxLength="30" />
+          <Property Name="DESCRIPTION" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="TBLCONTACT">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DESCRIPTION" Type="varchar" MaxLength="500" />
+          <Property Name="ADDRESS" Type="tinyint" />
+          <Property Name="EMAIL" Type="tinyint" />
+          <Property Name="MOBILE" Type="tinyint" />
+          <Property Name="MAPCOOR" Type="varchar(max)" />
+          <Property Name="ABOUTID" Type="tinyint" />
+        </EntityType>
+        <EntityType Name="TBLEDUCATION">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TITLE" Type="varchar" MaxLength="100" />
+          <Property Name="DATE" Type="varchar" MaxLength="30" />
+          <Property Name="SCHOOL" Type="varchar" MaxLength="100" />
+          <Property Name="DESCRIPTION" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="TBLEXPERIENCE">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TITLE" Type="varchar" MaxLength="50" />
+          <Property Name="DATE" Type="varchar" MaxLength="30" />
+          <Property Name="LOCATION" Type="varchar" MaxLength="30" />
+          <Property Name="DESCRIPTION1" Type="varchar" MaxLength="200" />
+          <Property Name="DESCRIPTION2" Type="varchar" MaxLength="200" />
+          <Property Name="DESCRIPTION3" Type="varchar" MaxLength="200" />
+          <Property Name="DESCRIPTION4" Type="varchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="TBLFACT">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TITLE" Type="varchar" MaxLength="50" />
+          <Property Name="VALUE" Type="int" />
+        </EntityType>
+        <EntityType Name="TBLFACTDESCRIPTION">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DESCRIPTION" Type="varchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="TBLPORTFOLIO">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DESCRIPTION" Type="varchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="TBLRESUME">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DESCRIPTION" Type="varchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="TBLSKILL">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="C#" Type="tinyint" />
+          <Property Name="SQL" Type="tinyint" />
+          <Property Name="MVC5" Type="tinyint" />
+          <Property Name="AZURE" Type="tinyint" />
+          <Property Name="PHOTOSHOP" Type="tinyint" />
+          <Property Name="SKETCHUP" Type="tinyint" />
+        </EntityType>
+        <EntityType Name="TBLSOCIALMEDIA">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TITLE" Type="varchar" MaxLength="100" />
+          <Property Name="URL" Type="varchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="TBLSTUDY">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PICTURL" Type="varchar(max)" />
+          <Property Name="CATEGORY" Type="tinyint" />
+        </EntityType>
+        <Association Name="FK_TBLCONTACT_TBLABOUT">
+          <End Role="TBLABOUT" Type="Self.TBLABOUT" Multiplicity="0..1" />
+          <End Role="TBLCONTACT" Type="Self.TBLCONTACT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBLABOUT">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TBLCONTACT">
+              <PropertyRef Name="ABOUTID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TBLSTUDY_TBLCATEGORY">
+          <End Role="TBLCATEGORY" Type="Self.TBLCATEGORY" Multiplicity="0..1" />
+          <End Role="TBLSTUDY" Type="Self.TBLSTUDY" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBLCATEGORY">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TBLSTUDY">
+              <PropertyRef Name="CATEGORY" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="PortfolioAndCvModelStoreContainer">
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBLABOUT" EntityType="Self.TBLABOUT" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBLCATEGORY" EntityType="Self.TBLCATEGORY" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBLCERTIFICATE" EntityType="Self.TBLCERTIFICATE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBLCONTACT" EntityType="Self.TBLCONTACT" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBLEDUCATION" EntityType="Self.TBLEDUCATION" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBLEXPERIENCE" EntityType="Self.TBLEXPERIENCE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBLFACT" EntityType="Self.TBLFACT" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBLFACTDESCRIPTION" EntityType="Self.TBLFACTDESCRIPTION" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBLPORTFOLIO" EntityType="Self.TBLPORTFOLIO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBLRESUME" EntityType="Self.TBLRESUME" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBLSKILL" EntityType="Self.TBLSKILL" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBLSOCIALMEDIA" EntityType="Self.TBLSOCIALMEDIA" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBLSTUDY" EntityType="Self.TBLSTUDY" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_TBLCONTACT_TBLABOUT" Association="Self.FK_TBLCONTACT_TBLABOUT">
+            <End Role="TBLABOUT" EntitySet="TBLABOUT" />
+            <End Role="TBLCONTACT" EntitySet="TBLCONTACT" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TBLSTUDY_TBLCATEGORY" Association="Self.FK_TBLSTUDY_TBLCATEGORY">
+            <End Role="TBLCATEGORY" EntitySet="TBLCATEGORY" />
+            <End Role="TBLSTUDY" EntitySet="TBLSTUDY" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="PortfolioAndCvModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="TBLABOUT">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NAMESURNAME" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="DESCRIPTION" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="TITLE" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="SUBTITLE" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ADDRESS" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="MOBILE" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="RELOCATION" Type="Boolean" />
+          <Property Name="AGE" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="DEGREE" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="EMAIL" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="SUBDESCRIPTION" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="TBLCONTACTs" Relationship="Self.FK_TBLCONTACT_TBLABOUT" FromRole="TBLABOUT" ToRole="TBLCONTACT" />
+          <Property Name="PICURL" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="TBLCATEGORY">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CATEGORY" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="TBLSTUDies" Relationship="Self.FK_TBLSTUDY_TBLCATEGORY" FromRole="TBLCATEGORY" ToRole="TBLSTUDY" />
+        </EntityType>
+        <EntityType Name="TBLCERTIFICATE">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TITLE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DATE" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="LOCATION" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="DESCRIPTION" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="TBLCONTACT">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DESCRIPTION" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="ADDRESS" Type="Byte" />
+          <Property Name="EMAIL" Type="Byte" />
+          <Property Name="MOBILE" Type="Byte" />
+          <Property Name="MAPCOOR" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ABOUTID" Type="Byte" />
+          <NavigationProperty Name="TBLABOUT" Relationship="Self.FK_TBLCONTACT_TBLABOUT" FromRole="TBLCONTACT" ToRole="TBLABOUT" />
+        </EntityType>
+        <EntityType Name="TBLEDUCATION">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TITLE" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="DATE" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="SCHOOL" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="DESCRIPTION" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="TBLEXPERIENCE">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TITLE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DATE" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="LOCATION" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="DESCRIPTION1" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="DESCRIPTION2" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="DESCRIPTION3" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="DESCRIPTION4" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="TBLPORTFOLIO">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DESCRIPTION" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="TBLRESUME">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DESCRIPTION" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="TBLSKILL">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="C_" Type="Byte" />
+          <Property Name="SQL" Type="Byte" />
+          <Property Name="MVC5" Type="Byte" />
+          <Property Name="AZURE" Type="Byte" />
+          <Property Name="PHOTOSHOP" Type="Byte" />
+          <Property Name="SKETCHUP" Type="Byte" />
+        </EntityType>
+        <EntityType Name="TBLSOCIALMEDIA">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TITLE" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="URL" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="TBLSTUDY">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PICTURL" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="CATEGORY" Type="Byte" />
+          <NavigationProperty Name="TBLCATEGORY" Relationship="Self.FK_TBLSTUDY_TBLCATEGORY" FromRole="TBLSTUDY" ToRole="TBLCATEGORY" />
+        </EntityType>
+        <Association Name="FK_TBLCONTACT_TBLABOUT">
+          <End Role="TBLABOUT" Type="Self.TBLABOUT" Multiplicity="0..1" />
+          <End Role="TBLCONTACT" Type="Self.TBLCONTACT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBLABOUT">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TBLCONTACT">
+              <PropertyRef Name="ABOUTID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TBLSTUDY_TBLCATEGORY">
+          <End Role="TBLCATEGORY" Type="Self.TBLCATEGORY" Multiplicity="0..1" />
+          <End Role="TBLSTUDY" Type="Self.TBLSTUDY" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBLCATEGORY">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TBLSTUDY">
+              <PropertyRef Name="CATEGORY" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="PortfolioAndCvEntities2" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+          <EntitySet Name="TBLABOUTs" EntityType="Self.TBLABOUT" />
+          <EntitySet Name="TBLCATEGORies" EntityType="Self.TBLCATEGORY" />
+          <EntitySet Name="TBLCERTIFICATEs" EntityType="Self.TBLCERTIFICATE" />
+          <EntitySet Name="TBLCONTACTs" EntityType="Self.TBLCONTACT" />
+          <EntitySet Name="TBLEDUCATIONs" EntityType="Self.TBLEDUCATION" />
+          <EntitySet Name="TBLEXPERIENCEs" EntityType="Self.TBLEXPERIENCE" />
+          <EntitySet Name="TBLPORTFOLIOs" EntityType="Self.TBLPORTFOLIO" />
+          <EntitySet Name="TBLRESUMEs" EntityType="Self.TBLRESUME" />
+          <EntitySet Name="TBLSKILLs" EntityType="Self.TBLSKILL" />
+          <EntitySet Name="TBLSOCIALMEDIAs" EntityType="Self.TBLSOCIALMEDIA" />
+          <EntitySet Name="TBLSTUDies" EntityType="Self.TBLSTUDY" />
+          <AssociationSet Name="FK_TBLCONTACT_TBLABOUT" Association="Self.FK_TBLCONTACT_TBLABOUT">
+            <End Role="TBLABOUT" EntitySet="TBLABOUTs" />
+            <End Role="TBLCONTACT" EntitySet="TBLCONTACTs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TBLSTUDY_TBLCATEGORY" Association="Self.FK_TBLSTUDY_TBLCATEGORY">
+            <End Role="TBLCATEGORY" EntitySet="TBLCATEGORies" />
+            <End Role="TBLSTUDY" EntitySet="TBLSTUDies" />
+          </AssociationSet>
+          <EntitySet Name="TBLFACTDESCRIPTIONs" EntityType="PortfolioAndCvModel.TBLFACTDESCRIPTION" />
+          <EntitySet Name="TBLFACTs" EntityType="PortfolioAndCvModel.TBLFACT" />
+        </EntityContainer>
+        <EntityType Name="TBLFACTDESCRIPTION">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DESCRIPTION" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="TBLFACT">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TITLE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="VALUE" Type="Int32" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="PortfolioAndCvModelStoreContainer" CdmEntityContainer="PortfolioAndCvEntities2">
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="PortfolioAndCvModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBLABOUTs">
+            <EntityTypeMapping TypeName="PortfolioAndCvModel.TBLABOUT">
+              <MappingFragment StoreEntitySet="TBLABOUT">
+                <ScalarProperty Name="PICURL" ColumnName="PICURL" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="NAMESURNAME" ColumnName="NAMESURNAME" />
+                <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
+                <ScalarProperty Name="TITLE" ColumnName="TITLE" />
+                <ScalarProperty Name="SUBTITLE" ColumnName="SUBTITLE" />
+                <ScalarProperty Name="ADDRESS" ColumnName="ADDRESS" />
+                <ScalarProperty Name="MOBILE" ColumnName="MOBILE" />
+                <ScalarProperty Name="RELOCATION" ColumnName="RELOCATION" />
+                <ScalarProperty Name="AGE" ColumnName="AGE" />
+                <ScalarProperty Name="DEGREE" ColumnName="DEGREE" />
+                <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+                <ScalarProperty Name="SUBDESCRIPTION" ColumnName="SUBDESCRIPTION" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBLCATEGORies">
+            <EntityTypeMapping TypeName="PortfolioAndCvModel.TBLCATEGORY">
+              <MappingFragment StoreEntitySet="TBLCATEGORY">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="CATEGORY" ColumnName="CATEGORY" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBLCERTIFICATEs">
+            <EntityTypeMapping TypeName="PortfolioAndCvModel.TBLCERTIFICATE">
+              <MappingFragment StoreEntitySet="TBLCERTIFICATE">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="TITLE" ColumnName="TITLE" />
+                <ScalarProperty Name="DATE" ColumnName="DATE" />
+                <ScalarProperty Name="LOCATION" ColumnName="LOCATION" />
+                <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBLCONTACTs">
+            <EntityTypeMapping TypeName="PortfolioAndCvModel.TBLCONTACT">
+              <MappingFragment StoreEntitySet="TBLCONTACT">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
+                <ScalarProperty Name="ADDRESS" ColumnName="ADDRESS" />
+                <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+                <ScalarProperty Name="MOBILE" ColumnName="MOBILE" />
+                <ScalarProperty Name="MAPCOOR" ColumnName="MAPCOOR" />
+                <ScalarProperty Name="ABOUTID" ColumnName="ABOUTID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBLEDUCATIONs">
+            <EntityTypeMapping TypeName="PortfolioAndCvModel.TBLEDUCATION">
+              <MappingFragment StoreEntitySet="TBLEDUCATION">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="TITLE" ColumnName="TITLE" />
+                <ScalarProperty Name="DATE" ColumnName="DATE" />
+                <ScalarProperty Name="SCHOOL" ColumnName="SCHOOL" />
+                <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBLEXPERIENCEs">
+            <EntityTypeMapping TypeName="PortfolioAndCvModel.TBLEXPERIENCE">
+              <MappingFragment StoreEntitySet="TBLEXPERIENCE">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="TITLE" ColumnName="TITLE" />
+                <ScalarProperty Name="DATE" ColumnName="DATE" />
+                <ScalarProperty Name="LOCATION" ColumnName="LOCATION" />
+                <ScalarProperty Name="DESCRIPTION1" ColumnName="DESCRIPTION1" />
+                <ScalarProperty Name="DESCRIPTION2" ColumnName="DESCRIPTION2" />
+                <ScalarProperty Name="DESCRIPTION3" ColumnName="DESCRIPTION3" />
+                <ScalarProperty Name="DESCRIPTION4" ColumnName="DESCRIPTION4" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBLPORTFOLIOs">
+            <EntityTypeMapping TypeName="PortfolioAndCvModel.TBLPORTFOLIO">
+              <MappingFragment StoreEntitySet="TBLPORTFOLIO">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBLRESUMEs">
+            <EntityTypeMapping TypeName="PortfolioAndCvModel.TBLRESUME">
+              <MappingFragment StoreEntitySet="TBLRESUME">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBLSKILLs">
+            <EntityTypeMapping TypeName="PortfolioAndCvModel.TBLSKILL">
+              <MappingFragment StoreEntitySet="TBLSKILL">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="C_" ColumnName="C#" />
+                <ScalarProperty Name="SQL" ColumnName="SQL" />
+                <ScalarProperty Name="MVC5" ColumnName="MVC5" />
+                <ScalarProperty Name="AZURE" ColumnName="AZURE" />
+                <ScalarProperty Name="PHOTOSHOP" ColumnName="PHOTOSHOP" />
+                <ScalarProperty Name="SKETCHUP" ColumnName="SKETCHUP" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBLSOCIALMEDIAs">
+            <EntityTypeMapping TypeName="PortfolioAndCvModel.TBLSOCIALMEDIA">
+              <MappingFragment StoreEntitySet="TBLSOCIALMEDIA">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="TITLE" ColumnName="TITLE" />
+                <ScalarProperty Name="URL" ColumnName="URL" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBLSTUDies">
+            <EntityTypeMapping TypeName="PortfolioAndCvModel.TBLSTUDY">
+              <MappingFragment StoreEntitySet="TBLSTUDY">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="PICTURL" ColumnName="PICTURL" />
+                <ScalarProperty Name="CATEGORY" ColumnName="CATEGORY" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBLFACTDESCRIPTIONs">
+            <EntityTypeMapping TypeName="PortfolioAndCvModel.TBLFACTDESCRIPTION">
+              <MappingFragment StoreEntitySet="TBLFACTDESCRIPTION">
+                <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBLFACTs">
+            <EntityTypeMapping TypeName="PortfolioAndCvModel.TBLFACT">
+              <MappingFragment StoreEntitySet="TBLFACT">
+                <ScalarProperty Name="VALUE" ColumnName="VALUE" />
+                <ScalarProperty Name="TITLE" ColumnName="TITLE" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
