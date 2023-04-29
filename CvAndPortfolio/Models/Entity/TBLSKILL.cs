@@ -15,11 +15,8 @@ namespace CvAndPortfolio.Models.Entity
     public partial class TBLSKILL
     {
         public byte ID { get; set; }
-        public Nullable<byte> C_ { get; set; }
-        public Nullable<byte> SQL { get; set; }
-        public Nullable<byte> MVC5 { get; set; }
-        public Nullable<byte> AZURE { get; set; }
-        public Nullable<byte> PHOTOSHOP { get; set; }
-        public Nullable<byte> SKETCHUP { get; set; }
+        public string TITLE { get; set; }
+        public Nullable<byte> VALUE { get; set; }
+        public Nullable<bool> LEFTORRIGHT { get; set; }
     }
 }

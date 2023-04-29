@@ -21,7 +21,7 @@
           </Key>
           <Property Name="ID" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="NAMESURNAME" Type="varchar" MaxLength="100" />
-          <Property Name="DESCRIPTION" Type="varchar" MaxLength="500" />
+          <Property Name="DESCRIPTION" Type="varchar(max)" />
           <Property Name="TITLE" Type="varchar" MaxLength="100" />
           <Property Name="SUBTITLE" Type="varchar" MaxLength="100" />
           <Property Name="ADDRESS" Type="varchar" MaxLength="300" />
@@ -30,7 +30,7 @@
           <Property Name="AGE" Type="varchar" MaxLength="3" />
           <Property Name="DEGREE" Type="varchar" MaxLength="30" />
           <Property Name="EMAIL" Type="varchar" MaxLength="100" />
-          <Property Name="SUBDESCRIPTION" Type="varchar" MaxLength="500" />
+          <Property Name="SUBDESCRIPTION" Type="varchar(max)" />
           <Property Name="PICURL" Type="varchar(max)" />
         </EntityType>
         <EntityType Name="TBLCATEGORY">
@@ -98,7 +98,7 @@
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="DESCRIPTION" Type="varchar" MaxLength="500" />
+          <Property Name="DESCRIPTION" Type="varchar(max)" />
         </EntityType>
         <EntityType Name="TBLPORTFOLIO">
           <Key>
@@ -119,12 +119,9 @@
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="C#" Type="tinyint" />
-          <Property Name="SQL" Type="tinyint" />
-          <Property Name="MVC5" Type="tinyint" />
-          <Property Name="AZURE" Type="tinyint" />
-          <Property Name="PHOTOSHOP" Type="tinyint" />
-          <Property Name="SKETCHUP" Type="tinyint" />
+          <Property Name="TITLE" Type="varchar" MaxLength="50" />
+          <Property Name="VALUE" Type="tinyint" />
+          <Property Name="LEFTORRIGHT" Type="bit" />
         </EntityType>
         <EntityType Name="TBLSOCIALMEDIA">
           <Key>
@@ -194,11 +191,35 @@
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="PortfolioAndCvModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="PortfolioAndCvEntities2" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="sysdiagrams" EntityType="PortfolioAndCvModel.sysdiagram" />
+          <EntitySet Name="TBLABOUTs" EntityType="PortfolioAndCvModel.TBLABOUT" />
+          <EntitySet Name="TBLCATEGORies" EntityType="PortfolioAndCvModel.TBLCATEGORY" />
+          <EntitySet Name="TBLCERTIFICATEs" EntityType="PortfolioAndCvModel.TBLCERTIFICATE" />
+          <EntitySet Name="TBLCONTACTs" EntityType="PortfolioAndCvModel.TBLCONTACT" />
+          <EntitySet Name="TBLEDUCATIONs" EntityType="PortfolioAndCvModel.TBLEDUCATION" />
+          <EntitySet Name="TBLEXPERIENCEs" EntityType="PortfolioAndCvModel.TBLEXPERIENCE" />
+          <EntitySet Name="TBLFACTs" EntityType="PortfolioAndCvModel.TBLFACT" />
+          <EntitySet Name="TBLFACTDESCRIPTIONs" EntityType="PortfolioAndCvModel.TBLFACTDESCRIPTION" />
+          <EntitySet Name="TBLPORTFOLIOs" EntityType="PortfolioAndCvModel.TBLPORTFOLIO" />
+          <EntitySet Name="TBLRESUMEs" EntityType="PortfolioAndCvModel.TBLRESUME" />
+          <EntitySet Name="TBLSOCIALMEDIAs" EntityType="PortfolioAndCvModel.TBLSOCIALMEDIA" />
+          <EntitySet Name="TBLSTUDies" EntityType="PortfolioAndCvModel.TBLSTUDY" />
+          <AssociationSet Name="FK_TBLCONTACT_TBLABOUT" Association="PortfolioAndCvModel.FK_TBLCONTACT_TBLABOUT">
+            <End Role="TBLABOUT" EntitySet="TBLABOUTs" />
+            <End Role="TBLCONTACT" EntitySet="TBLCONTACTs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TBLSTUDY_TBLCATEGORY" Association="PortfolioAndCvModel.FK_TBLSTUDY_TBLCATEGORY">
+            <End Role="TBLCATEGORY" EntitySet="TBLCATEGORies" />
+            <End Role="TBLSTUDY" EntitySet="TBLSTUDies" />
+          </AssociationSet>
+          <EntitySet Name="TBLSKILLs" EntityType="PortfolioAndCvModel.TBLSKILL" />
+        </EntityContainer>
         <EntityType Name="sysdiagram">
           <Key>
             <PropertyRef Name="diagram_id" />
           </Key>
-          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
           <Property Name="principal_id" Type="Int32" Nullable="false" />
           <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="version" Type="Int32" />
@@ -210,7 +231,7 @@
           </Key>
           <Property Name="ID" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="NAMESURNAME" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="DESCRIPTION" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="DESCRIPTION" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="TITLE" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="SUBTITLE" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="ADDRESS" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
@@ -219,9 +240,9 @@
           <Property Name="AGE" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
           <Property Name="DEGREE" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
           <Property Name="EMAIL" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="SUBDESCRIPTION" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="TBLCONTACTs" Relationship="Self.FK_TBLCONTACT_TBLABOUT" FromRole="TBLABOUT" ToRole="TBLCONTACT" />
+          <Property Name="SUBDESCRIPTION" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="PICURL" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="TBLCONTACTs" Relationship="PortfolioAndCvModel.FK_TBLCONTACT_TBLABOUT" FromRole="TBLABOUT" ToRole="TBLCONTACT" />
         </EntityType>
         <EntityType Name="TBLCATEGORY">
           <Key>
@@ -229,7 +250,7 @@
           </Key>
           <Property Name="ID" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="CATEGORY" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="TBLSTUDies" Relationship="Self.FK_TBLSTUDY_TBLCATEGORY" FromRole="TBLCATEGORY" ToRole="TBLSTUDY" />
+          <NavigationProperty Name="TBLSTUDies" Relationship="PortfolioAndCvModel.FK_TBLSTUDY_TBLCATEGORY" FromRole="TBLCATEGORY" ToRole="TBLSTUDY" />
         </EntityType>
         <EntityType Name="TBLCERTIFICATE">
           <Key>
@@ -252,7 +273,7 @@
           <Property Name="MOBILE" Type="Byte" />
           <Property Name="MAPCOOR" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="ABOUTID" Type="Byte" />
-          <NavigationProperty Name="TBLABOUT" Relationship="Self.FK_TBLCONTACT_TBLABOUT" FromRole="TBLCONTACT" ToRole="TBLABOUT" />
+          <NavigationProperty Name="TBLABOUT" Relationship="PortfolioAndCvModel.FK_TBLCONTACT_TBLABOUT" FromRole="TBLCONTACT" ToRole="TBLABOUT" />
         </EntityType>
         <EntityType Name="TBLEDUCATION">
           <Key>
@@ -277,6 +298,21 @@
           <Property Name="DESCRIPTION3" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
           <Property Name="DESCRIPTION4" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
         </EntityType>
+        <EntityType Name="TBLFACT">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TITLE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="VALUE" Type="Int32" />
+        </EntityType>
+        <EntityType Name="TBLFACTDESCRIPTION">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DESCRIPTION" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
         <EntityType Name="TBLPORTFOLIO">
           <Key>
             <PropertyRef Name="ID" />
@@ -290,18 +326,6 @@
           </Key>
           <Property Name="ID" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="DESCRIPTION" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
-        </EntityType>
-        <EntityType Name="TBLSKILL">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="C_" Type="Byte" />
-          <Property Name="SQL" Type="Byte" />
-          <Property Name="MVC5" Type="Byte" />
-          <Property Name="AZURE" Type="Byte" />
-          <Property Name="PHOTOSHOP" Type="Byte" />
-          <Property Name="SKETCHUP" Type="Byte" />
         </EntityType>
         <EntityType Name="TBLSOCIALMEDIA">
           <Key>
@@ -318,11 +342,11 @@
           <Property Name="ID" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="PICTURL" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="CATEGORY" Type="Byte" />
-          <NavigationProperty Name="TBLCATEGORY" Relationship="Self.FK_TBLSTUDY_TBLCATEGORY" FromRole="TBLSTUDY" ToRole="TBLCATEGORY" />
+          <NavigationProperty Name="TBLCATEGORY" Relationship="PortfolioAndCvModel.FK_TBLSTUDY_TBLCATEGORY" FromRole="TBLSTUDY" ToRole="TBLCATEGORY" />
         </EntityType>
         <Association Name="FK_TBLCONTACT_TBLABOUT">
-          <End Role="TBLABOUT" Type="Self.TBLABOUT" Multiplicity="0..1" />
-          <End Role="TBLCONTACT" Type="Self.TBLCONTACT" Multiplicity="*" />
+          <End Type="PortfolioAndCvModel.TBLABOUT" Role="TBLABOUT" Multiplicity="0..1" />
+          <End Type="PortfolioAndCvModel.TBLCONTACT" Role="TBLCONTACT" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="TBLABOUT">
               <PropertyRef Name="ID" />
@@ -333,8 +357,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_TBLSTUDY_TBLCATEGORY">
-          <End Role="TBLCATEGORY" Type="Self.TBLCATEGORY" Multiplicity="0..1" />
-          <End Role="TBLSTUDY" Type="Self.TBLSTUDY" Multiplicity="*" />
+          <End Type="PortfolioAndCvModel.TBLCATEGORY" Role="TBLCATEGORY" Multiplicity="0..1" />
+          <End Type="PortfolioAndCvModel.TBLSTUDY" Role="TBLSTUDY" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="TBLCATEGORY">
               <PropertyRef Name="ID" />
@@ -344,44 +368,14 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="PortfolioAndCvEntities2" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
-          <EntitySet Name="TBLABOUTs" EntityType="Self.TBLABOUT" />
-          <EntitySet Name="TBLCATEGORies" EntityType="Self.TBLCATEGORY" />
-          <EntitySet Name="TBLCERTIFICATEs" EntityType="Self.TBLCERTIFICATE" />
-          <EntitySet Name="TBLCONTACTs" EntityType="Self.TBLCONTACT" />
-          <EntitySet Name="TBLEDUCATIONs" EntityType="Self.TBLEDUCATION" />
-          <EntitySet Name="TBLEXPERIENCEs" EntityType="Self.TBLEXPERIENCE" />
-          <EntitySet Name="TBLPORTFOLIOs" EntityType="Self.TBLPORTFOLIO" />
-          <EntitySet Name="TBLRESUMEs" EntityType="Self.TBLRESUME" />
-          <EntitySet Name="TBLSKILLs" EntityType="Self.TBLSKILL" />
-          <EntitySet Name="TBLSOCIALMEDIAs" EntityType="Self.TBLSOCIALMEDIA" />
-          <EntitySet Name="TBLSTUDies" EntityType="Self.TBLSTUDY" />
-          <AssociationSet Name="FK_TBLCONTACT_TBLABOUT" Association="Self.FK_TBLCONTACT_TBLABOUT">
-            <End Role="TBLABOUT" EntitySet="TBLABOUTs" />
-            <End Role="TBLCONTACT" EntitySet="TBLCONTACTs" />
-          </AssociationSet>
-          <AssociationSet Name="FK_TBLSTUDY_TBLCATEGORY" Association="Self.FK_TBLSTUDY_TBLCATEGORY">
-            <End Role="TBLCATEGORY" EntitySet="TBLCATEGORies" />
-            <End Role="TBLSTUDY" EntitySet="TBLSTUDies" />
-          </AssociationSet>
-          <EntitySet Name="TBLFACTDESCRIPTIONs" EntityType="PortfolioAndCvModel.TBLFACTDESCRIPTION" />
-          <EntitySet Name="TBLFACTs" EntityType="PortfolioAndCvModel.TBLFACT" />
-        </EntityContainer>
-        <EntityType Name="TBLFACTDESCRIPTION">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="DESCRIPTION" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
-        </EntityType>
-        <EntityType Name="TBLFACT">
+        <EntityType Name="TBLSKILL">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="TITLE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="VALUE" Type="Int32" />
+          <Property Name="VALUE" Type="Byte" />
+          <Property Name="LEFTORRIGHT" Type="Boolean" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -392,11 +386,11 @@
           <EntitySetMapping Name="sysdiagrams">
             <EntityTypeMapping TypeName="PortfolioAndCvModel.sysdiagram">
               <MappingFragment StoreEntitySet="sysdiagrams">
-                <ScalarProperty Name="name" ColumnName="name" />
-                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
-                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
-                <ScalarProperty Name="version" ColumnName="version" />
                 <ScalarProperty Name="definition" ColumnName="definition" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -404,122 +398,84 @@
             <EntityTypeMapping TypeName="PortfolioAndCvModel.TBLABOUT">
               <MappingFragment StoreEntitySet="TBLABOUT">
                 <ScalarProperty Name="PICURL" ColumnName="PICURL" />
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="NAMESURNAME" ColumnName="NAMESURNAME" />
-                <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
-                <ScalarProperty Name="TITLE" ColumnName="TITLE" />
-                <ScalarProperty Name="SUBTITLE" ColumnName="SUBTITLE" />
-                <ScalarProperty Name="ADDRESS" ColumnName="ADDRESS" />
-                <ScalarProperty Name="MOBILE" ColumnName="MOBILE" />
-                <ScalarProperty Name="RELOCATION" ColumnName="RELOCATION" />
-                <ScalarProperty Name="AGE" ColumnName="AGE" />
-                <ScalarProperty Name="DEGREE" ColumnName="DEGREE" />
-                <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
                 <ScalarProperty Name="SUBDESCRIPTION" ColumnName="SUBDESCRIPTION" />
+                <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+                <ScalarProperty Name="DEGREE" ColumnName="DEGREE" />
+                <ScalarProperty Name="AGE" ColumnName="AGE" />
+                <ScalarProperty Name="RELOCATION" ColumnName="RELOCATION" />
+                <ScalarProperty Name="MOBILE" ColumnName="MOBILE" />
+                <ScalarProperty Name="ADDRESS" ColumnName="ADDRESS" />
+                <ScalarProperty Name="SUBTITLE" ColumnName="SUBTITLE" />
+                <ScalarProperty Name="TITLE" ColumnName="TITLE" />
+                <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
+                <ScalarProperty Name="NAMESURNAME" ColumnName="NAMESURNAME" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="TBLCATEGORies">
             <EntityTypeMapping TypeName="PortfolioAndCvModel.TBLCATEGORY">
               <MappingFragment StoreEntitySet="TBLCATEGORY">
-                <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="CATEGORY" ColumnName="CATEGORY" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="TBLCERTIFICATEs">
             <EntityTypeMapping TypeName="PortfolioAndCvModel.TBLCERTIFICATE">
               <MappingFragment StoreEntitySet="TBLCERTIFICATE">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="TITLE" ColumnName="TITLE" />
-                <ScalarProperty Name="DATE" ColumnName="DATE" />
-                <ScalarProperty Name="LOCATION" ColumnName="LOCATION" />
                 <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
+                <ScalarProperty Name="LOCATION" ColumnName="LOCATION" />
+                <ScalarProperty Name="DATE" ColumnName="DATE" />
+                <ScalarProperty Name="TITLE" ColumnName="TITLE" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="TBLCONTACTs">
             <EntityTypeMapping TypeName="PortfolioAndCvModel.TBLCONTACT">
               <MappingFragment StoreEntitySet="TBLCONTACT">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
-                <ScalarProperty Name="ADDRESS" ColumnName="ADDRESS" />
-                <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
-                <ScalarProperty Name="MOBILE" ColumnName="MOBILE" />
-                <ScalarProperty Name="MAPCOOR" ColumnName="MAPCOOR" />
                 <ScalarProperty Name="ABOUTID" ColumnName="ABOUTID" />
+                <ScalarProperty Name="MAPCOOR" ColumnName="MAPCOOR" />
+                <ScalarProperty Name="MOBILE" ColumnName="MOBILE" />
+                <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+                <ScalarProperty Name="ADDRESS" ColumnName="ADDRESS" />
+                <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="TBLEDUCATIONs">
             <EntityTypeMapping TypeName="PortfolioAndCvModel.TBLEDUCATION">
               <MappingFragment StoreEntitySet="TBLEDUCATION">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="TITLE" ColumnName="TITLE" />
-                <ScalarProperty Name="DATE" ColumnName="DATE" />
-                <ScalarProperty Name="SCHOOL" ColumnName="SCHOOL" />
                 <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
+                <ScalarProperty Name="SCHOOL" ColumnName="SCHOOL" />
+                <ScalarProperty Name="DATE" ColumnName="DATE" />
+                <ScalarProperty Name="TITLE" ColumnName="TITLE" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="TBLEXPERIENCEs">
             <EntityTypeMapping TypeName="PortfolioAndCvModel.TBLEXPERIENCE">
               <MappingFragment StoreEntitySet="TBLEXPERIENCE">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="TITLE" ColumnName="TITLE" />
-                <ScalarProperty Name="DATE" ColumnName="DATE" />
-                <ScalarProperty Name="LOCATION" ColumnName="LOCATION" />
-                <ScalarProperty Name="DESCRIPTION1" ColumnName="DESCRIPTION1" />
-                <ScalarProperty Name="DESCRIPTION2" ColumnName="DESCRIPTION2" />
-                <ScalarProperty Name="DESCRIPTION3" ColumnName="DESCRIPTION3" />
                 <ScalarProperty Name="DESCRIPTION4" ColumnName="DESCRIPTION4" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="TBLPORTFOLIOs">
-            <EntityTypeMapping TypeName="PortfolioAndCvModel.TBLPORTFOLIO">
-              <MappingFragment StoreEntitySet="TBLPORTFOLIO">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="TBLRESUMEs">
-            <EntityTypeMapping TypeName="PortfolioAndCvModel.TBLRESUME">
-              <MappingFragment StoreEntitySet="TBLRESUME">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="TBLSKILLs">
-            <EntityTypeMapping TypeName="PortfolioAndCvModel.TBLSKILL">
-              <MappingFragment StoreEntitySet="TBLSKILL">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="C_" ColumnName="C#" />
-                <ScalarProperty Name="SQL" ColumnName="SQL" />
-                <ScalarProperty Name="MVC5" ColumnName="MVC5" />
-                <ScalarProperty Name="AZURE" ColumnName="AZURE" />
-                <ScalarProperty Name="PHOTOSHOP" ColumnName="PHOTOSHOP" />
-                <ScalarProperty Name="SKETCHUP" ColumnName="SKETCHUP" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="TBLSOCIALMEDIAs">
-            <EntityTypeMapping TypeName="PortfolioAndCvModel.TBLSOCIALMEDIA">
-              <MappingFragment StoreEntitySet="TBLSOCIALMEDIA">
-                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="DESCRIPTION3" ColumnName="DESCRIPTION3" />
+                <ScalarProperty Name="DESCRIPTION2" ColumnName="DESCRIPTION2" />
+                <ScalarProperty Name="DESCRIPTION1" ColumnName="DESCRIPTION1" />
+                <ScalarProperty Name="LOCATION" ColumnName="LOCATION" />
+                <ScalarProperty Name="DATE" ColumnName="DATE" />
                 <ScalarProperty Name="TITLE" ColumnName="TITLE" />
-                <ScalarProperty Name="URL" ColumnName="URL" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="TBLSTUDies">
-            <EntityTypeMapping TypeName="PortfolioAndCvModel.TBLSTUDY">
-              <MappingFragment StoreEntitySet="TBLSTUDY">
+          <EntitySetMapping Name="TBLFACTs">
+            <EntityTypeMapping TypeName="PortfolioAndCvModel.TBLFACT">
+              <MappingFragment StoreEntitySet="TBLFACT">
+                <ScalarProperty Name="VALUE" ColumnName="VALUE" />
+                <ScalarProperty Name="TITLE" ColumnName="TITLE" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="PICTURL" ColumnName="PICTURL" />
-                <ScalarProperty Name="CATEGORY" ColumnName="CATEGORY" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -531,9 +487,44 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="TBLFACTs">
-            <EntityTypeMapping TypeName="PortfolioAndCvModel.TBLFACT">
-              <MappingFragment StoreEntitySet="TBLFACT">
+          <EntitySetMapping Name="TBLPORTFOLIOs">
+            <EntityTypeMapping TypeName="PortfolioAndCvModel.TBLPORTFOLIO">
+              <MappingFragment StoreEntitySet="TBLPORTFOLIO">
+                <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBLRESUMEs">
+            <EntityTypeMapping TypeName="PortfolioAndCvModel.TBLRESUME">
+              <MappingFragment StoreEntitySet="TBLRESUME">
+                <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBLSOCIALMEDIAs">
+            <EntityTypeMapping TypeName="PortfolioAndCvModel.TBLSOCIALMEDIA">
+              <MappingFragment StoreEntitySet="TBLSOCIALMEDIA">
+                <ScalarProperty Name="URL" ColumnName="URL" />
+                <ScalarProperty Name="TITLE" ColumnName="TITLE" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBLSTUDies">
+            <EntityTypeMapping TypeName="PortfolioAndCvModel.TBLSTUDY">
+              <MappingFragment StoreEntitySet="TBLSTUDY">
+                <ScalarProperty Name="CATEGORY" ColumnName="CATEGORY" />
+                <ScalarProperty Name="PICTURL" ColumnName="PICTURL" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBLSKILLs">
+            <EntityTypeMapping TypeName="PortfolioAndCvModel.TBLSKILL">
+              <MappingFragment StoreEntitySet="TBLSKILL">
+                <ScalarProperty Name="LEFTORRIGHT" ColumnName="LEFTORRIGHT" />
                 <ScalarProperty Name="VALUE" ColumnName="VALUE" />
                 <ScalarProperty Name="TITLE" ColumnName="TITLE" />
                 <ScalarProperty Name="ID" ColumnName="ID" />

@@ -26,5 +26,12 @@ namespace CvAndPortfolio.Controllers
             var values = db.TBLFACTs.ToList();
             return PartialView(values);
         }
+
+        public PartialViewResult Skills()
+        {
+            var values = db.TBLSKILLs.ToList();
+            return PartialView(values);
+        }
+        
     }
 }
