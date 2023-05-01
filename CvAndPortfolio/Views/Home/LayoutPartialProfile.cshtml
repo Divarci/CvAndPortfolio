@@ -1,0 +1,13 @@
+﻿@using CvAndPortfolio.Models.Entity
+@model List<TBLABOUT>
+
+<div class="profile">
+    @foreach (var item in Model)
+    {
+        <img src="@item.PICURL" alt="" class="img-fluid rounded-circle">
+        <h1 class="text-light"><a href="/Home/Index/">@item.NAMESURNAME</a></h1>
+    }
+
+    @Html.Action("LayoutPartial")
+</div>
+

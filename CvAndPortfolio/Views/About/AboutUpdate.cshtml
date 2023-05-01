@@ -1,0 +1,150 @@
+﻿@using CvAndPortfolio.Models.Entity
+@model List<TBLABOUT>
+@{
+    ViewBag.Title = "AboutUpdate";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<body>
+    <div class="layout-page">
+        <!-- Content wrapper -->
+        <div class="content-wrapper">
+            <!-- Content -->
+            <div class="container-xxl flex-grow-1 container-p-y">
+                <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">About Me /</span> Profile</h4>
+
+                <div class="row">
+                    <div class="col-md-12">
+
+                        <div class="card mb-4">
+                            <div class="card-body">
+                                <div class="d-flex align-items-start align-items-sm-center gap-4">
+                                    @foreach (var item in Model)
+                                    {
+                                        <img src="@item.PICURL"
+                                             alt="user-avatar"
+                                             class="d-block rounded"
+                                             height="100"
+                                             width="100" />
+                                    }
+                                </div>
+                            </div>
+                            <hr class="my-0" />
+                            <div class="card-body">
+                                <form method="POST">
+                                    <div class="row">
+                                        @foreach (var item in Model)
+                                        {
+
+                                            <div class="mb-3 col-md-6">
+                                                <label class="form-label">Full Name</label>
+                                                <input class="form-control"
+                                                       type="text"
+                                                       name="NAMESURNAME"
+                                                       value="@item.NAMESURNAME"
+                                                       autofocus />
+                                            </div>
+                                            <div class="mb-3 col-md-6">
+                                                <label class="form-label">ADDRESS</label>
+                                                <input class="form-control"
+                                                       type="text"
+                                                       name="ADDRESS"
+                                                       value="@item.ADDRESS" />
+                                            </div>
+                                            <div class="mb-3 col-md-6">
+                                                <label class="form-label">TITLE</label>
+                                                <input class="form-control"
+                                                       type="text"
+                                                       name="TITLE"
+                                                       value="@item.TITLE" />
+                                            </div>
+                                            <div class="mb-3 col-md-6">
+                                                <label class="form-label">SUBTITLE</label>
+                                                <input class="form-control"
+                                                       type="text"
+                                                       name="SUBTITLE"
+                                                       value="@item.SUBTITLE" />
+                                            </div>
+                                            <div class="mb-3 col-md-6">
+                                                <label class="form-label">DEGREE</label>
+                                                <input type="text"
+                                                       class="form-control"
+                                                       name="DEGREE"
+                                                       value="@item.DEGREE" />
+                                            </div>
+                                            <div class="mb-3 col-md-6">
+                                                <label class="form-label">MOBILE</label>
+                                                <input type="text"
+                                                       name="MOBILE"
+                                                       class="form-control"
+                                                       value="@item.MOBILE" />
+                                            </div>
+
+                                            <div class="mb-3 col-md-6">
+                                                <label class="form-label">AGE</label>
+                                                <input type="text"
+                                                       class="form-control"
+                                                       name="AGE"
+                                                       value="@item.AGE" />
+                                            </div>
+
+                                            <div class="mb-3 col-md-6">
+                                                <label class="form-label">E-MAIL</label>
+                                                <input class="form-control"
+                                                       type="text"
+                                                       name="EMAIL"
+                                                       value="@item.EMAIL" />
+                                            </div>
+                                            <div class="mb-3 col-md-6">
+                                                <label class="form-label">RELOCATION</label>
+                                                <input type="text"
+                                                       class="form-control"
+                                                       name="RELOCATION" @*maxlength="6"*@
+                                                       value="@item.RELOCATION" />
+                                            </div>
+                                            <div class="mb-3 col-md-6">
+                                                <label class="form-label">PICTURE URL</label>
+                                                <input type="text"
+                                                       class="form-control"
+                                                       name="PICURL" @*maxlength="6"*@
+                                                       value="@item.PICURL" />
+                                            </div>
+                                            <div class="mb-3 col-md-6">
+                                                <label class="form-label">DESCRIPTION</label>
+                                                <textarea rows="8"
+                                                          type="text"
+                                                          class="form-control"
+                                                          name="DESCRIPTION">@item.DESCRIPTION</textarea>
+
+                                            </div>
+                                            <div class="mb-3 col-md-6">
+                                                <label class="form-label">SUBDESCRIPTION</label>
+                                                <textarea rows="8"
+                                                          type="text"
+                                                          class="form-control"
+                                                          name="SUBDESCRIPTION">@item.SUBDESCRIPTION</textarea>
+                                            </div>
+                                        }
+
+
+                                    </div>
+                                    <div class="mt-2">
+                                        <button type="submit" class="btn btn-primary me-2">Save changes</button>
+                                        <button type="reset" class="btn btn-outline-secondary">Cancel</button>
+                                    </div>
+                                </form>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>

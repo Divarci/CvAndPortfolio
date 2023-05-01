@@ -1,10 +1,14 @@
-﻿@using CvAndPortfolio.Models.Entity
+﻿
+@using CvAndPortfolio.Models.Entity
 @model List<TBLSTUDY>
 
 @{
-    ViewBag.Title = "PortfolioDt";
+    ViewBag.Title = "PortDet";
     Layout = "~/Views/Shared/_MainPageLayout.cshtml";
 }
+
+<h2>PortDet</h2>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -55,7 +59,7 @@
                             {
                                 <p>@item.DESCRIPTION</p>
                             }
-                            
+
                         </div>
                     </div>
 
@@ -65,7 +69,7 @@
         </section><!-- End Portfolio Details Section -->
 
     </main><!-- End #main -->
-    
+
 </body>
 
 </html>

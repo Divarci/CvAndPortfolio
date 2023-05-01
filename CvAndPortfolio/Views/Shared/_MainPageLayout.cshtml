@@ -1,5 +1,4 @@
-﻿@using CvAndPortfolio.Models.Entity
-@model List<TBLABOUT>
+﻿
 @{
     Layout = null;
 }
@@ -51,16 +50,7 @@
     <header id="header">
         <div class="d-flex flex-column">
 
-            <div class="profile">
-                @foreach (var item in Model)
-                {
-                    <img src="@item.PICURL" alt="" class="img-fluid rounded-circle">
-                    <h1 class="text-light"><a href="/Home/Index/"> @item.NAMESURNAME</a></h1>
-                }
-                
-                @Html.Action("LayoutPartial")
-            </div>
-
+            @Html.Action("LayoutPartialProfile")
             <nav id="navbar" class="nav-menu navbar">
                 <ul>
                     <li><a href="#hero" class="nav-link scrollto active"><i class="bx bx-home"></i> <span>Home</span></a></li>

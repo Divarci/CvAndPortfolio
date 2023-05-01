@@ -1,0 +1,58 @@
+﻿@model CvAndPortfolio.Models.Entity.TBLCERTIFICATE
+
+@{
+    ViewBag.Title = "CertificateUpdate";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<html>
+<body>
+    <div class="layout-page">
+        <!-- Content wrapper -->
+        <div class="content-wrapper">
+            <!-- Content -->
+            <div class="container-xxl flex-grow-1 container-p-y">
+                <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Resume /</span> Certificates</h4>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card mb-4">
+                            <h5 class="card-header">UPDATE CERTIFICATE</h5>
+                            <hr class="my-0" />
+                            <div class="card-body">
+                                <form method="POST">
+                                    <div class="row">
+                                        <div class="mb-3 col-md-12">
+                                            <label class="form-label">TITLE</label>
+                                            @Html.TextBoxFor(x => x.TITLE, new { @class = "form-control" })
+
+                                        </div>
+                                        <div class="mb-3 col-md-6">
+                                            <label class="form-label">DATE</label>
+                                            @Html.TextBoxFor(x => x.DATE, new { @class = "form-control" })
+                                        </div>
+                                        <div class="mb-3 col-md-6">
+                                            <label class="form-label">SOURCE</label>
+                                            @Html.TextBoxFor(x => x.LOCATION, new { @class = "form-control" })
+                                        </div>
+                                        <div class="mb-3 col-md-12">
+                                            <label class="form-label">DESCRIPTION</label>
+                                            @Html.TextBoxFor(x => x.DESCRIPTION, new { @class = "form-control" })
+                                        </div>
+                                    </div>
+                                    <div class="mt-2">
+                                        <button type="submit" class="btn btn-primary me-2">Update</button>
+                                        <button type="reset" class="btn btn-outline-secondary">Cancel</button>
+                                    </div>
+                                </form>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>

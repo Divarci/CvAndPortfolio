@@ -6,23 +6,23 @@
     <edmx:Diagrams>
       <Diagram DiagramId="8023248773744b3e8aac3dc1858893a0" Name="Diagram1">
         <EntityTypeShape EntityType="PortfolioAndCvModel.sysdiagram" Width="1.5" PointX="5.75" PointY="4.75" />
+        <EntityTypeShape EntityType="PortfolioAndCvModel.TBLABOUT" Width="1.5" PointX="0.75" PointY="5" />
         <EntityTypeShape EntityType="PortfolioAndCvModel.TBLCATEGORY" Width="1.5" PointX="0.75" PointY="1.375" />
         <EntityTypeShape EntityType="PortfolioAndCvModel.TBLCERTIFICATE" Width="1.5" PointX="7.75" PointY="0.75" />
+        <EntityTypeShape EntityType="PortfolioAndCvModel.TBLCONTACT" Width="1.5" PointX="3" PointY="5.875" />
         <EntityTypeShape EntityType="PortfolioAndCvModel.TBLEDUCATION" Width="1.5" PointX="7.75" PointY="3.75" />
         <EntityTypeShape EntityType="PortfolioAndCvModel.TBLEXPERIENCE" Width="1.5" PointX="5.75" PointY="7.75" />
-        <EntityTypeShape EntityType="PortfolioAndCvModel.TBLFACT" Width="1.75" PointX="7.75" PointY="7" />
-        <EntityTypeShape EntityType="PortfolioAndCvModel.TBLFACTDESCRIPTION" Width="1.5" PointX="9.75" PointY="0.75" />
-        <EntityTypeShape EntityType="PortfolioAndCvModel.TBLPORTFOLIO" Width="1.5" PointX="0.75" PointY="9.75" />
-        <EntityTypeShape EntityType="PortfolioAndCvModel.TBLRESUME" Width="1.5" PointX="2.75" PointY="9.75" />
-        <EntityTypeShape EntityType="PortfolioAndCvModel.TBLSKILL" Width="1.5" PointX="9.75" PointY="3.75" />
-        <EntityTypeShape EntityType="PortfolioAndCvModel.TBLSOCIALMEDIA" Width="1.5" PointX="9.75" PointY="6.75" />
+        <EntityTypeShape EntityType="PortfolioAndCvModel.TBLFACT" Width="1.5" PointX="7.75" PointY="6.75" />
+        <EntityTypeShape EntityType="PortfolioAndCvModel.TBLFACTDESCRIPTION" Width="1.5" PointX="2.75" PointY="8.75" />
+        <EntityTypeShape EntityType="PortfolioAndCvModel.TBLPORTFOLIO" Width="1.5" PointX="9.75" PointY="0.75" />
+        <EntityTypeShape EntityType="PortfolioAndCvModel.TBLRESUME" Width="1.5" PointX="9.75" PointY="3.75" />
+        <EntityTypeShape EntityType="PortfolioAndCvModel.TBLSKILL" Width="1.5" PointX="9.75" PointY="6.75" />
+        <EntityTypeShape EntityType="PortfolioAndCvModel.TBLSOCIALMEDIA" Width="1.5" PointX="7.75" PointY="9.75" />
         <EntityTypeShape EntityType="PortfolioAndCvModel.TBLSTUDY" Width="1.5" PointX="3" PointY="1" />
         <EntityTypeShape EntityType="PortfolioAndCvModel.TBLSTUDYPIC" Width="1.5" PointX="5.25" PointY="1.125" />
+        <AssociationConnector Association="PortfolioAndCvModel.FK_TBLCONTACT_TBLABOUT" />
         <AssociationConnector Association="PortfolioAndCvModel.FK_TBLSTUDY_TBLCATEGORY" />
         <AssociationConnector Association="PortfolioAndCvModel.FK_TBLSTUDYPIC_TBLSTUDY" />
-        <EntityTypeShape EntityType="PortfolioAndCvModel.TBLABOUT" Width="1.5" PointX="8.375" PointY="10" />
-        <EntityTypeShape EntityType="PortfolioAndCvModel.TBLCONTACT" Width="1.5" PointX="10.625" PointY="10.875" />
-        <AssociationConnector Association="PortfolioAndCvModel.FK_TBLCONTACT_TBLABOUT" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

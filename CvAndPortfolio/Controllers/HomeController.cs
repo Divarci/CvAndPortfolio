@@ -1,4 +1,5 @@
 ﻿using CvAndPortfolio.Models.Entity;
+using CvAndPortfolio.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -68,11 +69,6 @@ namespace CvAndPortfolio.Controllers
             return PartialView(values);
         }
 
-        public ActionResult PortfolioDt(TBLSTUDY p)
-        {
-            var values = db.TBLSTUDies.Where(x => x.ID == p.ID).ToList();
-            return View(values);
-        }
         public PartialViewResult StudyPics(TBLSTUDY p)
         {
             var values = db.TBLSTUDYPICs.Where(x => x.STUDYID == p.ID).ToList();
@@ -84,10 +80,22 @@ namespace CvAndPortfolio.Controllers
             var values = db.TBLCONTACTs.ToList();
             return PartialView(values);
         }
+        
         public PartialViewResult LayoutPartial()
         {
             var values = db.TBLSOCIALMEDIAs.ToList();
             return PartialView(values);
+        }
+        public PartialViewResult LayoutPartialProfile()
+        {
+            var values = db.TBLABOUTs.ToList();
+            return PartialView(values);
+        }
+
+        public ActionResult PortDet(TBLSTUDY p)
+        {
+            var values = db.TBLSTUDies.Where(x=>x.ID == p.ID).ToList();
+            return View(values);
         }
     }
 }

@@ -1,0 +1,54 @@
+﻿@using CvAndPortfolio.Models.Entity;
+@model List<TBLSKILL>
+@{
+    ViewBag.Title = "Skills";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<body>
+    <div class="layout-page">
+        <div class="content-wrapper">
+            <div class="container-xxl flex-grow-1 container-p-y">
+                <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">About Me /</span> Skills</h4>
+                <div class="card">
+                    <div class="table-responsive text-nowrap">
+                        <table class="table">
+                            <thead class="table-light">
+                                <tr>
+                                    <th>TITLE</th>
+                                    <th>PROGRESS</th>
+                                    <th>VALUE</th>
+                                    <th>UPDATE</th>
+                                    <th>DELETE</th>
+                                </tr>
+                            </thead>
+                            <tbody class="table-border-bottom-0">
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>@item.TITLE</td>
+                                        <td>
+                                            <div class="progress">
+                                                <div class="progress-bar"
+                                                     role="progressbar"
+                                                     style="width: @item.VALUE%"
+                                                     aria-valuenow="@item.VALUE"
+                                                     aria-valuemin="0"
+                                                     aria-valuemax="100"></div>
+                                            </div>
+                                        </td>
+                                        <td>@item.VALUE%</td>
+                                        <td><a href="/About/SkillUpdate/@item.ID" class="btn btn-info">EDIT</a></td>
+                                        <td><a href="/About/SkillDelete/@item.ID" class="btn btn-warning">DELETE</a></td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <br />
+                <a href="/About/SkillAdd/" class="btn btn-primary">ADD NEW SKILL</a>
+            </div>
+        </div>
+    </div>
+</body>
