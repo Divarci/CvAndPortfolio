@@ -1,7 +1,8 @@
 ﻿@using CvAndPortfolio.Models.Entity
-@model List<TBLRESUME>
+@model List<TBLCONTACT>
+
 @{
-    ViewBag.Title = "ResumeUpdate";
+    ViewBag.Title = "ContactUpdate";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
@@ -12,7 +13,7 @@
         <div class="content-wrapper">
             <!-- Content -->
             <div class="container-xxl flex-grow-1 container-p-y">
-                <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Resume /</span> Description</h4>
+                <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Contact /</span> Informations</h4>
 
                 <div class="row">
                     <div class="col-md-12">
@@ -24,11 +25,19 @@
                                     <div class="row">
                                         @foreach (var item in Model)
                                         {
+                                            <label class="form-label">DESCRIPTION</label>
                                             <div class="mb-3 col-md-12">
-                                                <textarea rows="8"
+                                                <textarea rows="4"
                                                           type="text"
                                                           class="form-control"
                                                           name="DESCRIPTION">@item.DESCRIPTION</textarea>
+                                            </div>
+                                            <label class="form-label">MAP COORDINATE</label>
+                                            <div class="mb-3 col-md-12">
+                                                <textarea rows="4"
+                                                          type="text"
+                                                          class="form-control"
+                                                          name="MAPCOOR">@item.MAPCOOR</textarea>
                                             </div>
 
                                         }
@@ -51,4 +60,6 @@
     </div>
 </body>
 </html>
+
+
 

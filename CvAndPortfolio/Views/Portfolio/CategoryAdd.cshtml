@@ -1,7 +1,6 @@
-﻿@using CvAndPortfolio.Models.Entity
-@model List<TBLFACT>
+﻿
 @{
-    ViewBag.Title = "FactAdd";
+    ViewBag.Title = "CategoryAdd";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
@@ -12,30 +11,31 @@
         <div class="content-wrapper">
             <!-- Content -->
             <div class="container-xxl flex-grow-1 container-p-y">
-                <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">About Me / Facts /</span>  Add</h4>
+                <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Portfolio / Categories /</span> Add</h4>
                 <div class="row">
                     <div class="col-md-12">
                         <div class="card mb-4">
-                            <h5 class="card-header">ADD NEW FACT</h5>
+                            <h5 class="card-header">ADD NEW CATEGORY</h5>
                             <hr class="my-0" />
                             <div class="card-body">
                                 <form method="POST">
                                     <div class="row">
                                         <div class="mb-3 col-md-6">
-                                            <label class="form-label">TITLE</label>
+                                            <label class="form-label">CATEGORY</label>
                                             <input class="form-control"
                                                    type="text"
-                                                   name="TITLE"
+                                                   name="CATEGORY"
                                                    autofocus
                                                    required />
                                         </div>
                                         <div class="mb-3 col-md-6">
-                                            <label class="form-label">VALUE</label>
+                                            <label class="form-label">TITLE</label>
                                             <input type="text"
                                                    class="form-control"
-                                                   name="VALUE"
-                                                   required/>
+                                                   name="TITLE"
+                                                   required />
                                         </div>
+                                        
                                     </div>
                                     <div class="mt-2">
                                         <button type="submit" class="btn btn-primary me-2">Save</button>

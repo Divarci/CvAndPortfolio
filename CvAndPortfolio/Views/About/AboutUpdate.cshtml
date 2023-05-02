@@ -1,9 +1,9 @@
-﻿@using CvAndPortfolio.Models.Entity
-@model List<TBLABOUT>
+﻿@model CvAndPortfolio.Models.Entity.TBLABOUT
 @{
     ViewBag.Title = "AboutUpdate";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
+
 
 <!DOCTYPE html>
 
@@ -22,29 +22,27 @@
                         <div class="card mb-4">
                             <div class="card-body">
                                 <div class="d-flex align-items-start align-items-sm-center gap-4">
-                                    @foreach (var item in Model)
-                                    {
-                                        <img src="@item.PICURL"
-                                             alt="user-avatar"
-                                             class="d-block rounded"
-                                             height="100"
-                                             width="100" />
-                                    }
+
+                                    <img src="@Model.PICURL"
+                                         alt="user-avatar"
+                                         class="d-block rounded"
+                                         height="100"
+                                         width="100" />
+
                                 </div>
                             </div>
                             <hr class="my-0" />
                             <div class="card-body">
                                 <form method="POST">
                                     <div class="row">
-                                        @foreach (var item in Model)
-                                        {
+                                       
 
                                             <div class="mb-3 col-md-6">
                                                 <label class="form-label">Full Name</label>
                                                 <input class="form-control"
                                                        type="text"
                                                        name="NAMESURNAME"
-                                                       value="@item.NAMESURNAME"
+                                                       value="@Model.NAMESURNAME"
                                                        autofocus />
                                             </div>
                                             <div class="mb-3 col-md-6">
@@ -52,35 +50,35 @@
                                                 <input class="form-control"
                                                        type="text"
                                                        name="ADDRESS"
-                                                       value="@item.ADDRESS" />
+                                                       value="@Model.ADDRESS" />
                                             </div>
                                             <div class="mb-3 col-md-6">
                                                 <label class="form-label">TITLE</label>
                                                 <input class="form-control"
                                                        type="text"
                                                        name="TITLE"
-                                                       value="@item.TITLE" />
+                                                       value="@Model.TITLE" />
                                             </div>
                                             <div class="mb-3 col-md-6">
                                                 <label class="form-label">SUBTITLE</label>
                                                 <input class="form-control"
                                                        type="text"
                                                        name="SUBTITLE"
-                                                       value="@item.SUBTITLE" />
+                                                       value="@Model.SUBTITLE" />
                                             </div>
                                             <div class="mb-3 col-md-6">
                                                 <label class="form-label">DEGREE</label>
                                                 <input type="text"
                                                        class="form-control"
                                                        name="DEGREE"
-                                                       value="@item.DEGREE" />
+                                                       value="@Model.DEGREE" />
                                             </div>
                                             <div class="mb-3 col-md-6">
                                                 <label class="form-label">MOBILE</label>
                                                 <input type="text"
                                                        name="MOBILE"
                                                        class="form-control"
-                                                       value="@item.MOBILE" />
+                                                       value="@Model.MOBILE" />
                                             </div>
 
                                             <div class="mb-3 col-md-6">
@@ -88,7 +86,7 @@
                                                 <input type="text"
                                                        class="form-control"
                                                        name="AGE"
-                                                       value="@item.AGE" />
+                                                       value="@Model.AGE" />
                                             </div>
 
                                             <div class="mb-3 col-md-6">
@@ -96,28 +94,28 @@
                                                 <input class="form-control"
                                                        type="text"
                                                        name="EMAIL"
-                                                       value="@item.EMAIL" />
+                                                       value="@Model.EMAIL" />
                                             </div>
                                             <div class="mb-3 col-md-6">
                                                 <label class="form-label">RELOCATION</label>
                                                 <input type="text"
                                                        class="form-control"
                                                        name="RELOCATION" @*maxlength="6"*@
-                                                       value="@item.RELOCATION" />
+                                                       value="@Model.RELOCATION" />
                                             </div>
                                             <div class="mb-3 col-md-6">
                                                 <label class="form-label">PICTURE URL</label>
                                                 <input type="text"
                                                        class="form-control"
                                                        name="PICURL" @*maxlength="6"*@
-                                                       value="@item.PICURL" />
+                                                       value="@Model.PICURL" />
                                             </div>
                                             <div class="mb-3 col-md-6">
                                                 <label class="form-label">DESCRIPTION</label>
                                                 <textarea rows="8"
                                                           type="text"
                                                           class="form-control"
-                                                          name="DESCRIPTION">@item.DESCRIPTION</textarea>
+                                                          name="DESCRIPTION">@Model.DESCRIPTION</textarea>
 
                                             </div>
                                             <div class="mb-3 col-md-6">
@@ -125,9 +123,9 @@
                                                 <textarea rows="8"
                                                           type="text"
                                                           class="form-control"
-                                                          name="SUBDESCRIPTION">@item.SUBDESCRIPTION</textarea>
+                                                          name="SUBDESCRIPTION">@Model.SUBDESCRIPTION</textarea>
                                             </div>
-                                        }
+                                        
 
 
                                     </div>

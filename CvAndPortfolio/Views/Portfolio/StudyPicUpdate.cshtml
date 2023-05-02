@@ -1,0 +1,64 @@
+﻿@model CvAndPortfolio.Models.Entity.TBLSTUDYPIC
+@{
+    ViewBag.Title = "StudyPicUpdate";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+
+<body>
+    <div class="layout-page">
+        <div class="content-wrapper">
+            <div class="container-xxl flex-grow-1 container-p-y">
+                <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Portfolio / Studies / Pictures /</span> Update</h4>
+                <div class="container-xxl flex-grow-1 container-p-y">
+                    <div class="row">
+
+                        <div class="col-lg-6 col-md-4 order-1">
+                            <form method="post">
+                                <div class="row">
+                                    <div class="col-lg-12 col-md-12 col-6 mb-4">
+
+                                        <label class="form-label">TITLE</label>
+                                        <input type="text"
+                                               class="form-control"
+                                               name="TITLE"
+                                               VALUE="@Model.TITLE" />
+
+
+                                    </div>
+                                        <div class="col-lg-12 col-md-12 col-6 mb-4">
+                                            <img src="@Model.PICURL"
+                                                 alt="user-avatar"
+                                                 class="d-block rounded"
+                                                 height="400"
+                                                 width="655" />
+
+                                        </div>
+                                        <div class="col-lg-12 col-md-12 col-6 mb-4">
+
+                                            <label class="form-label">URL</label>
+                                            <textarea rows="8"
+                                                      type="text"
+                                                      class="form-control"
+                                                      name="PICURL">@Model.PICURL</textarea>
+
+
+
+                                        </div>
+
+                                    </div>
+
+                                    <button type="submit" class="btn btn-primary me-2">Update</button>
+                                    <button type="reset" class="btn btn-outline-secondary">Cancel</button>
+                                </form>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+
+

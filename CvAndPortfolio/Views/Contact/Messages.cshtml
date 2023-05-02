@@ -1,0 +1,65 @@
+﻿@using CvAndPortfolio.Models.Entity
+@model List<TBLMESSAGE>
+@{
+    ViewBag.Title = "Messages";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<body>
+    <div class="layout-page">
+        <div class="content-wrapper">
+            <div class="container-xxl flex-grow-1 container-p-y">
+                <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Contact /</span> Messages</h4>
+                <div class="card">
+                    <div class="table-responsive text-nowrap">
+                        <table class="table">
+                            <thead class="table-light">
+                                <tr>
+                                    <th>SENDER</th>
+                                    <th>EMAIL</th>
+                                    <th>SUBJECT</th>
+                                    <th>MESSAGE</th>
+                                    <th>UPDATE</th>
+                                    <th>DELETE</th>
+                                </tr>
+                            </thead>
+                            <tbody class="table-border-bottom-0">
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>@item.NAME</td>
+                                        <td>@item.EMAIL</td>
+                                        <td>
+                                            @{
+                                                var length = 50;
+                                                if (length > @item.SUBJECT.Length)
+                                                {
+                                                    length = @item.SUBJECT.Length;
+                                                }
+                                                @item.SUBJECT.Substring(0, length)
+                                            }
+                                        </td>
+                                        <td>
+                                            @{
+                                                var length2 = 50;
+                                                if (length2 > @item.MESSAGE.Length)
+                                                {
+                                                    length2 = @item.MESSAGE.Length;
+                                                }
+                                                @item.MESSAGE.Substring(0, length2)
+                                            }
+
+                                        </td>
+                                        <td><a href="/Contact/MessageUpdate/@item.ID" class="btn btn-info">EDIT</a></td>
+                                        <td><a href="/Contact/MessageDelete/@item.ID" class="btn btn-warning">DELETE</a></td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <br />
+            </div>
+        </div>
+    </div>
+</body>

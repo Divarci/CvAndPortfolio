@@ -12,7 +12,7 @@ namespace CvAndPortfolio.Controllers
     public class ResumeController : Controller
     {
         GenericReporitory<TBLRESUME> repoResume = new GenericReporitory<TBLRESUME>();
-
+       
         // GET: Resume
         [HttpGet]
         public ActionResult ResumeUpdate()
@@ -28,7 +28,7 @@ namespace CvAndPortfolio.Controllers
             repoResume.Update(values);
             return RedirectToAction("ResumeUpdate");
         }
-
+               
         GenericReporitory<TBLEXPERIENCE> repoExp = new GenericReporitory<TBLEXPERIENCE>();
 
         public ActionResult Experiences()

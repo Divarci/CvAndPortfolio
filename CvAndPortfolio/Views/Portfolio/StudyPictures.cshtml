@@ -1,0 +1,55 @@
+﻿@using CvAndPortfolio.Models.Entity
+@model List<TBLSTUDYPIC>
+@{
+    ViewBag.Title = "StudyPictures";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<body>
+    <div class="layout-page">
+        <div class="content-wrapper">
+            <div class="container-xxl flex-grow-1 container-p-y">
+                <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Portfolio / Studies /</span> Pictures</h4>
+                <div class="card">
+                    <div class="table-responsive text-nowrap">
+                        <table class="table">
+                            <thead class="table-light">
+                                <tr>
+                                    <th>TITLE</th>
+                                    <th>URL</th>
+                                    <th>UPDATE</th>
+                                    <th>DELETE</th>
+                                </tr>
+                            </thead>
+                            <tbody class="table-border-bottom-0">
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>@item.TITLE</td>
+                                        <td>
+                                            @{
+                                                var length = 50;
+                                                if (length > @item.PICURL.Length)
+                                                {
+                                                    length = @item.PICURL.Length;
+                                                }
+                                                @item.PICURL.Substring(0, length)
+                                            }
+
+                                        </td>
+                                        <td><a href="/Portfolio/StudyPicUpdate/@item.ID" class="btn btn-info">EDIT</a></td>
+                                        <td><a href="/Portfolio/StudyPicDelete/@item.ID" class="btn btn-warning">DELETE</a></td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <br />
+                
+            </div>
+        </div>
+    </div>
+</body>
+

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using CvAndPortfolio.Models.Entity;
+using CvAndPortfolio.Repositories;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -13,6 +15,22 @@ namespace CvAndPortfolio.Controllers
         {
             return View();
         }
-               
+
+        GenericReporitory<TBLSKILL> repoSkill = new GenericReporitory<TBLSKILL>();
+
+        public PartialViewResult Progress()
+        {
+            var values = repoSkill.List();
+            return PartialView(values);
+        }
+
+        GenericReporitory<TBLMESSAGE> repoMessages = new GenericReporitory<TBLMESSAGE>();
+
+        public PartialViewResult TopMessages()
+        {
+            var values = repoMessages.List();
+            return PartialView(values);
+        }
+
     }
 }

@@ -1,0 +1,12 @@
+﻿@using CvAndPortfolio.Models.Entity
+@model List<TBLCATEGORY>
+
+
+@foreach (var item in Model)
+{
+    
+        <option value="@item.ID">@item.CATEGORY</option>
+    
+}
+
+

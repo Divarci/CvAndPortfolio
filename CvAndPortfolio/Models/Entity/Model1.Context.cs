@@ -40,5 +40,6 @@ namespace CvAndPortfolio.Models.Entity
         public virtual DbSet<TBLSOCIALMEDIA> TBLSOCIALMEDIAs { get; set; }
         public virtual DbSet<TBLSTUDY> TBLSTUDies { get; set; }
         public virtual DbSet<TBLSTUDYPIC> TBLSTUDYPICs { get; set; }
+        public virtual DbSet<TBLMESSAGE> TBLMESSAGEs { get; set; }
     }
 }

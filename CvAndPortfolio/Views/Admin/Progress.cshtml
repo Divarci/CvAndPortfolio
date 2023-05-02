@@ -1,0 +1,51 @@
+﻿@using CvAndPortfolio.Models.Entity
+@model List<TBLSKILL>
+
+
+<body>
+
+  
+        <div class="layout-page">
+            <div class="container-xxl flex-grow-1 container-p-y">
+                <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Skills /</span> Progress bars</h4>
+                <div class="card mb-4">
+                    <div class="card-body">
+                        @foreach (var item in Model)
+                        {
+                            string temp = "";
+
+                            if (item.VALUE <= 25)
+                            {
+                                temp = "progress-bar progress-bar-striped progress-bar-animated bg-danger";
+                            }
+                            else if (item.VALUE <= 50 && item.VALUE > 25)
+                            {
+                                temp = "progress-bar progress-bar-striped progress-bar-animated bg-warning";
+                            }
+                            else if (item.VALUE <= 75 && item.VALUE > 50)
+                            {
+                                temp = "progress-bar progress-bar-striped progress-bar-animated bg-primary";
+                            }
+                            else
+                            {
+                                temp = "progress-bar progress-bar-striped progress-bar-animated bg-success";
+                            }
+
+                            <label class="form-label">@item.TITLE</label>
+                            <div class="progress">
+                                <div class="@temp"
+                                     role="progressbar"
+                                     style="width: @item.VALUE%"
+                                     aria-valuenow="20"
+                                     aria-valuemin="0"
+                                     aria-valuemax="100"></div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+</body>

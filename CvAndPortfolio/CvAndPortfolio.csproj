@@ -131,7 +131,9 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AboutController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\ContactController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\PortfolioController.cs" />
     <Compile Include="Controllers\ResumeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -176,6 +178,9 @@
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Entity\TBLFACTDESCRIPTION.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Entity\TBLMESSAGE.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Entity\TBLPORTFOLIO.cs">
@@ -665,6 +670,24 @@
     <Content Include="Views\Resume\Certificates.cshtml" />
     <Content Include="Views\Resume\CertificateAdd.cshtml" />
     <Content Include="Views\Resume\CertificateUpdate.cshtml" />
+    <Content Include="Views\About\AboutMe.cshtml" />
+    <Content Include="Views\Portfolio\PortfolioUpdate.cshtml" />
+    <Content Include="Views\Portfolio\Categories.cshtml" />
+    <Content Include="Views\Portfolio\CategoryUpdate.cshtml" />
+    <Content Include="Views\Portfolio\CategoryAdd.cshtml" />
+    <Content Include="Views\Portfolio\Studies.cshtml" />
+    <Content Include="Views\Portfolio\StudyAdd.cshtml" />
+    <Content Include="Views\Portfolio\StudyUpdate.cshtml" />
+    <Content Include="Views\Portfolio\CategoryDropDownDefault.cshtml" />
+    <Content Include="Views\Contact\ContactUpdate.cshtml" />
+    <Content Include="Views\Home\SendMessage.cshtml" />
+    <Content Include="Views\Contact\Messages.cshtml" />
+    <Content Include="Views\Contact\MessageUpdate.cshtml" />
+    <Content Include="Views\Portfolio\StudyPictures.cshtml" />
+    <Content Include="Views\Portfolio\StudyPicUpdate.cshtml" />
+    <Content Include="Views\Portfolio\StudyPicAdd.cshtml" />
+    <Content Include="Views\Admin\Progress.cshtml" />
+    <Content Include="Views\Admin\TopMessages.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

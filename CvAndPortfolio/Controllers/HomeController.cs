@@ -97,5 +97,19 @@ namespace CvAndPortfolio.Controllers
             var values = db.TBLSTUDies.Where(x=>x.ID == p.ID).ToList();
             return View(values);
         }
+
+        [HttpGet]
+        public PartialViewResult SendMessage()
+        {
+            return PartialView();
+        }
+        [HttpPost]
+        public PartialViewResult SendMessage(TBLMESSAGE tbl)
+        {
+            db.TBLMESSAGEs.Add(tbl);
+            db.SaveChanges();
+            return PartialView();
+        }
+       
     }
 }

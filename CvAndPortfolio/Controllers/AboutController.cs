@@ -11,19 +11,26 @@ namespace CvAndPortfolio.Controllers
     public class AboutController : Controller
     {
         GenericReporitory<TBLABOUT> repoAbout = new GenericReporitory<TBLABOUT>();
-        
+
         // GET: About
-        [HttpGet]
-        public ActionResult AboutUpdate()
+
+        public ActionResult AboutMe()
         {
             var values = repoAbout.List();
             return View(values);
         }
-        
+
+        [HttpGet]
+        public ActionResult AboutUpdate(byte id)
+        {
+            var values = repoAbout.Find(x => x.ID == id);
+            return View(values);
+        }
+
         [HttpPost]
         public ActionResult AboutUpdate(TBLABOUT tbl)
         {
-            var values = repoAbout.Find(x=>x.ID == 1);
+            var values = repoAbout.Find(x => x.ID == tbl.ID);
             values.NAMESURNAME = tbl.NAMESURNAME;
             values.ADDRESS = tbl.ADDRESS;
             values.TITLE = tbl.TITLE;
@@ -41,7 +48,7 @@ namespace CvAndPortfolio.Controllers
         }
 
         GenericReporitory<TBLFACT> repoFact = new GenericReporitory<TBLFACT>();
-               
+
         public ActionResult Facts()
         {
             var values = repoFact.List();
@@ -61,22 +68,22 @@ namespace CvAndPortfolio.Controllers
 
         public ActionResult FactDelete(byte id)
         {
-            var values = repoFact.Find(x=>x.ID == id);
+            var values = repoFact.Find(x => x.ID == id);
             repoFact.Delete(values);
             return RedirectToAction("Facts");
         }
         [HttpGet]
         public ActionResult FactUpdate(byte id)
         {
-            var values = repoFact.Find(x=>x.ID == id);
+            var values = repoFact.Find(x => x.ID == id);
             return View(values);
         }
         [HttpPost]
         public ActionResult FactUpdate(TBLFACT tbl)
         {
-            var values = repoFact.Find(x=>x.ID == tbl.ID);
+            var values = repoFact.Find(x => x.ID == tbl.ID);
             values.TITLE = tbl.TITLE;
-            values.VALUE = tbl.VALUE; 
+            values.VALUE = tbl.VALUE;
             repoFact.Update(values);
             return RedirectToAction("Facts");
 
@@ -105,13 +112,13 @@ namespace CvAndPortfolio.Controllers
         [HttpGet]
         public ActionResult SkillUpdate(byte id)
         {
-            var values = repoSkill.Find(x=>x.ID == id);
+            var values = repoSkill.Find(x => x.ID == id);
             return View(values);
         }
         [HttpPost]
         public ActionResult SkillUpdate(TBLSKILL tbl)
         {
-            var values = repoSkill.Find(x=> x.ID == tbl.ID);
+            var values = repoSkill.Find(x => x.ID == tbl.ID);
             values.TITLE = tbl.TITLE;
             values.VALUE = tbl.VALUE;
             values.LEFTORRIGHT = tbl.LEFTORRIGHT;

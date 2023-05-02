@@ -22,6 +22,7 @@ namespace CvAndPortfolio.Models.Entity
     
         public byte ID { get; set; }
         public string CATEGORY { get; set; }
+        public string TITLE { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<TBLSTUDY> TBLSTUDies { get; set; }

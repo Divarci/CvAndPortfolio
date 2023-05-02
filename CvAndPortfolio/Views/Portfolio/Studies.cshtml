@@ -1,0 +1,75 @@
+﻿@using CvAndPortfolio.Models.Entity
+@model List<TBLSTUDY>
+
+@{
+    ViewBag.Title = "Studies";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<body>
+    <div class="layout-page">
+        <div class="content-wrapper">
+            <div class="container-xxl flex-grow-1 container-p-y">
+                <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Portfolio /</span> Studies</h4>
+                <div class="card">
+                    <div class="table-responsive text-nowrap">
+                        <table class="table">
+                            <thead class="table-light">
+                                <tr>
+                                    <th>TITLE</th>
+                                    <th>DESCRIPTION</th>
+                                    <th>PICTURE URL</th>
+                                    <th>CATEGORY</th>
+                                    <th>EDIT PICTURES</th>
+                                    <th>UPDATE</th>
+                                    <th>DELETE</th>
+                                </tr>
+                            </thead>
+                            <tbody class="table-border-bottom-0">
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>@item.TITLE</td>
+                                        <td>
+                                            @{
+                                                var length = 30;
+                                                if (length > @item.DESCRIPTION.Length)
+                                                {
+                                                    length = @item.DESCRIPTION.Length;
+                                                }
+                                                @item.DESCRIPTION.Substring(0, length)
+                                            }
+                                        </td>
+                                        <td>
+                                            @{
+                                                var length2 = 30;
+                                                if (length2 > @item.PICTURL.Length)
+                                                {
+                                                    length2 = @item.PICTURL.Length;
+                                                }
+                                                @item.PICTURL.Substring(0, length)
+                                            }
+                                        </td>
+                                        <td>@item.TBLCATEGORY.CATEGORY</td>
+                                        <td><a href="/Portfolio/StudyPictures/@item.ID" class="btn btn-primary">PICTURES</a></td>
+                                        <td><a href="/Portfolio/StudyUpdate/@item.ID" class="btn btn-info">EDIT</a></td>
+                                        <td><a href="/Portfolio/StudyDelete/@item.ID" class="btn btn-warning">DELETE</a></td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <br />
+                <a href="/Portfolio/StudyAdd/" class="btn btn-primary">ADD NEW STUDY</a>
+                <a href="/Portfolio/StudyPicAdd/" class="btn btn-info">ADD NEW PICTURE</a>
+            </div>
+        </div>
+    </div>
+
+
+   
+
+
+</body>
+

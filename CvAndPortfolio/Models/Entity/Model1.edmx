@@ -39,6 +39,7 @@
           </Key>
           <Property Name="ID" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="CATEGORY" Type="varchar" MaxLength="50" />
+          <Property Name="TITLE" Type="varchar" MaxLength="500" />
         </EntityType>
         <EntityType Name="TBLCERTIFICATE">
           <Key>
@@ -96,6 +97,16 @@
           </Key>
           <Property Name="ID" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="DESCRIPTION" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="TBLMESSAGE">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NAME" Type="varchar" MaxLength="50" />
+          <Property Name="EMAIL" Type="varchar" MaxLength="50" />
+          <Property Name="SUBJECT" Type="varchar" MaxLength="200" />
+          <Property Name="MESSAGE" Type="varchar(max)" />
         </EntityType>
         <EntityType Name="TBLPORTFOLIO">
           <Key>
@@ -195,6 +206,7 @@
           <EntitySet Name="TBLEXPERIENCE" EntityType="Self.TBLEXPERIENCE" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TBLFACT" EntityType="Self.TBLFACT" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TBLFACTDESCRIPTION" EntityType="Self.TBLFACTDESCRIPTION" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBLMESSAGE" EntityType="Self.TBLMESSAGE" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TBLPORTFOLIO" EntityType="Self.TBLPORTFOLIO" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TBLRESUME" EntityType="Self.TBLRESUME" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TBLSKILL" EntityType="Self.TBLSKILL" Schema="dbo" store:Type="Tables" />
@@ -246,6 +258,7 @@
             <End Role="TBLSTUDY" EntitySet="TBLSTUDies" />
             <End Role="TBLSTUDYPIC" EntitySet="TBLSTUDYPICs" />
           </AssociationSet>
+          <EntitySet Name="TBLMESSAGEs" EntityType="PortfolioAndCvModel.TBLMESSAGE" />
         </EntityContainer>
         <EntityType Name="sysdiagram">
           <Key>
@@ -283,6 +296,7 @@
           <Property Name="ID" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="CATEGORY" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="TBLSTUDies" Relationship="PortfolioAndCvModel.FK_TBLSTUDY_TBLCATEGORY" FromRole="TBLCATEGORY" ToRole="TBLSTUDY" />
+          <Property Name="TITLE" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="TBLCERTIFICATE">
           <Key>
@@ -433,6 +447,16 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="TBLMESSAGE">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="EMAIL" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SUBJECT" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="MESSAGE" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -472,6 +496,7 @@
           <EntitySetMapping Name="TBLCATEGORies">
             <EntityTypeMapping TypeName="PortfolioAndCvModel.TBLCATEGORY">
               <MappingFragment StoreEntitySet="TBLCATEGORY">
+                <ScalarProperty Name="TITLE" ColumnName="TITLE" />
                 <ScalarProperty Name="CATEGORY" ColumnName="CATEGORY" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
@@ -594,6 +619,17 @@
                 <ScalarProperty Name="STUDYID" ColumnName="STUDYID" />
                 <ScalarProperty Name="TITLE" ColumnName="TITLE" />
                 <ScalarProperty Name="PICURL" ColumnName="PICURL" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBLMESSAGEs">
+            <EntityTypeMapping TypeName="PortfolioAndCvModel.TBLMESSAGE">
+              <MappingFragment StoreEntitySet="TBLMESSAGE">
+                <ScalarProperty Name="MESSAGE" ColumnName="MESSAGE" />
+                <ScalarProperty Name="SUBJECT" ColumnName="SUBJECT" />
+                <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>

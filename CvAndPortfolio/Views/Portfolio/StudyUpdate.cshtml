@@ -1,9 +1,12 @@
-﻿@model CvAndPortfolio.Models.Entity.TBLSKILL
+﻿
+@model CvAndPortfolio.Models.Entity.TBLSTUDY
 
 @{
-    ViewBag.Title = "SkillUpdate";
+    ViewBag.Title = "StudyUpdate";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
+
+
 
 <html>
 <body>
@@ -12,11 +15,11 @@
         <div class="content-wrapper">
             <!-- Content -->
             <div class="container-xxl flex-grow-1 container-p-y">
-                <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">About Me / Skills /</span> Update</h4>
+                <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Portfolio / Studies /</span> Update</h4>
                 <div class="row">
                     <div class="col-md-12">
                         <div class="card mb-4">
-                            <h5 class="card-header">UPDATE SKILL</h5>
+                            <h5 class="card-header">UPDATE STUDY</h5>
                             <hr class="my-0" />
                             <div class="card-body">
                                 <form method="POST">
@@ -26,20 +29,28 @@
                                             @Html.TextBoxFor(x => x.TITLE, new { @class = "form-control" })
                                         </div>
                                         <div class="mb-3 col-md-6">
-                                            <label class="form-label">VALUE</label>
-                                            @Html.TextBoxFor(x => x.VALUE, new { @class = "form-control" })
+                                            <label class="form-label">CATEGORY</label>
+                                            <select name="CATEGORY" class="select2 form-select">
+                                                <option value="@Model.TBLCATEGORY.ID" selected>@Model.TBLCATEGORY.CATEGORY</option>
+
+                                                @Html.Action("CategoryDropDownDefault")
+
+                                            </select>
                                         </div>
-                                        <div class="mb-3 col-md-6">
-                                            <label class="form-label">VALUE</label>
-                                            <input class="form-control"
-                                                   type="text"
-                                                   name="LEFTORRIGHT"
-                                                   value="" 
-                                                   placeholder="TRUE for LEFT or FALSE for RIGHT"/>
+                                        <div class="mb-3 col-md-12">
+                                            <label class="form-label">DESCRIPTION</label>
+                                            @Html.TextAreaFor(x => x.DESCRIPTION, new { @class = "form-control" })
                                         </div>
+                                        <div class="mb-3 col-md-12">
+                                            <label class="form-label">PICTURE URL</label>
+                                            @Html.TextAreaFor(x => x.PICTURL, new { @class = "form-control" })
+                                        </div>
+
+
+
                                     </div>
                                     <div class="mt-2">
-                                        <button type="submit" class="btn btn-primary me-2">Save</button>
+                                        <button type="submit" class="btn btn-primary me-2">Update</button>
                                         <button type="reset" class="btn btn-outline-secondary">Cancel</button>
                                     </div>
                                 </form>
@@ -53,5 +64,10 @@
         </div>
 
     </div>
+    
+
 </body>
 </html>
+
+
+
