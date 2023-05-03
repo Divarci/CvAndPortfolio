@@ -1,0 +1,51 @@
+﻿@using CvAndPortfolio.Models.Entity
+@model List<TBLADMIN>
+@{
+    ViewBag.Title = "UserSettings";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<body>
+    <div class="layout-page">
+        <div class="content-wrapper">
+            <div class="container-xxl flex-grow-1 container-p-y">
+                <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">User Settings /</span> Users</h4>
+                <div class="card">
+                    <div class="table-responsive text-nowrap">
+                        <table class="table">
+                            <thead class="table-light">
+                                <tr>
+                                    <th>USERNAME</th>
+                                    <th>UPDATE</th>
+
+                                </tr>
+                            </thead>
+                            <tbody class="table-border-bottom-0">
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>@item.USERNAME</td>
+                                        <td><a href="/Admin/UserEdit/@item.ID" class="btn btn-info">EDIT</a></td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <br />
+               
+            </div>
+        </div>
+    </div>
+</body>
+
+
+
+
+
+
+
+
+
+

@@ -1,5 +1,4 @@
-﻿
-@{
+﻿@{
     Layout = null;
 }
 
@@ -66,31 +65,31 @@
 
 <body>
     @RenderBody()
+
     <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
 
         <a href="/Home/Index/" class="btn btn-info">Go to The Site</a>
-        <a href="javascript:void(0);" class="btn btn-warning">Log Out</a>
+        <a href="/login/Logout/" class="btn btn-warning">Log Out</a>
 
         <div class="menu-inner-shadow"></div>
         <ul class="menu-inner py-1">
 
             <!-- Main Menu -->
-            <li class="menu-header small text-uppercase">
-                <span class="menu-header-text">Main Menu</span>
-            </li>
 
-            <li class="menu-item active">
+            <li class="menu-item">
                 <a href="/Admin/Index/" class="menu-link">
                     <i class="menu-icon tf-icons bx bx-home-circle"></i>
                     <div>Dashboard</div>
                 </a>
             </li>
             <li class="menu-item">
-                <a href="javascript:void(0);" class="menu-link">
-                    <i class="menu-icon tf-icons bx bx-layout"></i>
-                    <div>User Settings</div>
-                </a>
+            <a href="/Admin/UserSettings/" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-home-circle"></i>
+                <div>User Settings</div>
+            </a>
             </li>
+
+
             <!-- About Me -->
             <li class="menu-header small text-uppercase">
                 <span class="menu-header-text">About Me</span>
@@ -129,7 +128,7 @@
                 </a>
 
             </li>
-            
+
             <li class="menu-item">
                 <a href="/Resume/Experiences/" class="menu-link">
                     <i class="menu-icon tf-icons bx bx-lock-open-alt"></i>

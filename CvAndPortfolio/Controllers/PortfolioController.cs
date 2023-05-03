@@ -12,7 +12,7 @@ namespace CvAndPortfolio.Controllers
     {
         // GET: Portfolio
         GenericReporitory<TBLPORTFOLIO> repoPort = new GenericReporitory<TBLPORTFOLIO>();
-
+        
         [HttpGet]
         public ActionResult PortfolioUpdate()
         {

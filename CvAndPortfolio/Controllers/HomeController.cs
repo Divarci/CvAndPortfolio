@@ -8,6 +8,7 @@ using System.Web.Mvc;
 
 namespace CvAndPortfolio.Controllers
 {
+    [AllowAnonymous]
     public class HomeController : Controller
     {
         PortfolioAndCvEntities2 db = new PortfolioAndCvEntities2();

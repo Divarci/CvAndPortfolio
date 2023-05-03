@@ -42,5 +42,11 @@ namespace CvAndPortfolio.Repositories
         {
             return db.Set<Table>().FirstOrDefault(where);
         }
+
+        public List<Table> Take(int p)
+        {
+            return db.Set<Table>().Take(p).ToList();
+        }
+
     }
 }

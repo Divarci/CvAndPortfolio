@@ -25,12 +25,37 @@ namespace CvAndPortfolio.Controllers
         }
 
         GenericReporitory<TBLMESSAGE> repoMessages = new GenericReporitory<TBLMESSAGE>();
-
+        PortfolioAndCvEntities2 db = new PortfolioAndCvEntities2();
         public PartialViewResult TopMessages()
         {
-            var values = repoMessages.List();
+            var values = repoMessages.Take(5).ToList();
+
             return PartialView(values);
         }
 
+        GenericReporitory<TBLADMIN> repoAdmin = new GenericReporitory<TBLADMIN>();
+
+        
+        public ActionResult UserSettings()
+        {
+            var values = repoAdmin.List();
+            return View(values);
+        }
+       
+        [HttpGet]
+        public ActionResult UserEdit(byte id)
+        {
+            var values = repoAdmin.Find(x=>x.ID == id);
+            return View(values);
+        }
+        [HttpPost]
+        public ActionResult UserEdit(TBLADMIN p)
+        {
+            var values = repoAdmin.Find(x => x.ID == 1);
+            values.USERNAME = p.USERNAME;
+            values.PASSWORD = p.PASSWORD;
+            repoAdmin.Update(values);
+            return RedirectToAction("Index", "Admin");
+        }
     }
 }
