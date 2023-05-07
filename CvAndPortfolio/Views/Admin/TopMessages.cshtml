@@ -14,9 +14,8 @@
                                 <tr>
                                     <th>SENDER</th>
                                     <th>EMAIL</th>
-                                    <th>SEUBJECT</th>
-                                    <th>MESSAGE</th>
-
+                                    <th>SUBJECT</th>
+                                   
                                 </tr>
                             </thead>
                             <tbody class="table-border-bottom-0">
@@ -25,27 +24,7 @@
                                     <tr>
                                         <td><i class="fab fa-angular fa-lg text-danger me-3"></i> <strong>@item.NAME</strong></td>
                                         <td>@item.EMAIL</td>
-                                        <td>
-                                            @{
-                                                var length1 = 30;
-                                                if (length1 > @item.SUBJECT.Length)
-                                                {
-                                                    length1 = @item.SUBJECT.Length;
-                                                }
-                                                @item.SUBJECT.Substring(0, length1)
-                                            }
-                                        </td>
-                                        <td>
-                                            @{
-                                                var length = 30;
-                                                if (length > @item.MESSAGE.Length)
-                                                {
-                                                    length = @item.MESSAGE.Length;
-                                                }
-                                                @item.MESSAGE.Substring(0, length)
-                                            }
-                                        </td>
-                                       
+                                        <td>@item.SUBJECT</td>
                                     </tr>
                                 }
                             </tbody>

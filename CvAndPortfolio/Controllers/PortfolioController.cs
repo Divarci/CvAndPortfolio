@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Windows;
 
 namespace CvAndPortfolio.Controllers
 {
@@ -12,7 +13,7 @@ namespace CvAndPortfolio.Controllers
     {
         // GET: Portfolio
         GenericReporitory<TBLPORTFOLIO> repoPort = new GenericReporitory<TBLPORTFOLIO>();
-        
+
         [HttpGet]
         public ActionResult PortfolioUpdate()
         {
@@ -113,7 +114,12 @@ namespace CvAndPortfolio.Controllers
         public ActionResult StudyDelete(int id)
         {
             var values = repoStudy.Find(x => x.ID == id);
-            repoStudy.Delete(values);
+            var valuespic = repoStudyPic.Find(x => x.STUDYID == id);
+            if (valuespic == null)
+            {
+                repoStudy.Delete(values);
+            }
+                        
             return RedirectToAction("Studies");
         }
 
@@ -145,7 +151,7 @@ namespace CvAndPortfolio.Controllers
             return RedirectToAction("Studies");
 
         }
-       
+
 
         [HttpGet]
         public ActionResult StudyPicAdd()
@@ -162,7 +168,7 @@ namespace CvAndPortfolio.Controllers
 
         public ActionResult StudyPicDelete(int id)
         {
-            var values = repoStudyPic.Find(x=>x.ID == id);
+            var values = repoStudyPic.Find(x => x.ID == id);
             repoStudyPic.Delete(values);
             return RedirectToAction("Studies");
         }

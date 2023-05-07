@@ -18,7 +18,6 @@
                                     <th>SENDER</th>
                                     <th>EMAIL</th>
                                     <th>SUBJECT</th>
-                                    <th>MESSAGE</th>
                                     <th>UPDATE</th>
                                     <th>DELETE</th>
                                 </tr>
@@ -29,28 +28,8 @@
                                     <tr>
                                         <td>@item.NAME</td>
                                         <td>@item.EMAIL</td>
-                                        <td>
-                                            @{
-                                                var length = 50;
-                                                if (length > @item.SUBJECT.Length)
-                                                {
-                                                    length = @item.SUBJECT.Length;
-                                                }
-                                                @item.SUBJECT.Substring(0, length)
-                                            }
-                                        </td>
-                                        <td>
-                                            @{
-                                                var length2 = 50;
-                                                if (length2 > @item.MESSAGE.Length)
-                                                {
-                                                    length2 = @item.MESSAGE.Length;
-                                                }
-                                                @item.MESSAGE.Substring(0, length2)
-                                            }
-
-                                        </td>
-                                        <td><a href="/Contact/MessageUpdate/@item.ID" class="btn btn-info">EDIT</a></td>
+                                        <td>@item.SUBJECT</td>                                        
+                                        <td><a href="/Contact/MessageUpdate/@item.ID" class="btn btn-info">READ / EDIT</a></td>
                                         <td><a href="/Contact/MessageDelete/@item.ID" class="btn btn-warning">DELETE</a></td>
                                     </tr>
                                 }

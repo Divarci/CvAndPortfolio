@@ -53,6 +53,7 @@
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="PresentationFramework" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -807,6 +808,9 @@
     <Content Include="Views\Login\Index.cshtml" />
     <Content Include="Views\Admin\UserSettings.cshtml" />
     <Content Include="Views\Admin\UserEdit.cshtml" />
+    <Content Include="Views\Admin\SocialMedia.cshtml" />
+    <Content Include="Views\Admin\SocialMediaAdd.cshtml" />
+    <Content Include="Views\Admin\SocialMediaUpdate.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

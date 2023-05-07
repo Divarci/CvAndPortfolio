@@ -35,17 +35,17 @@ namespace CvAndPortfolio.Controllers
 
         GenericReporitory<TBLADMIN> repoAdmin = new GenericReporitory<TBLADMIN>();
 
-        
+
         public ActionResult UserSettings()
         {
             var values = repoAdmin.List();
             return View(values);
         }
-       
+
         [HttpGet]
         public ActionResult UserEdit(byte id)
         {
-            var values = repoAdmin.Find(x=>x.ID == id);
+            var values = repoAdmin.Find(x => x.ID == id);
             return View(values);
         }
         [HttpPost]
@@ -56,6 +56,49 @@ namespace CvAndPortfolio.Controllers
             values.PASSWORD = p.PASSWORD;
             repoAdmin.Update(values);
             return RedirectToAction("Index", "Admin");
+        }
+
+        GenericReporitory<TBLSOCIALMEDIA> repoSocialMedia = new GenericReporitory<TBLSOCIALMEDIA>();
+
+        public PartialViewResult SocialMedia()
+        {
+            var values = repoSocialMedia.List();
+            return PartialView(values);
+        }
+        [HttpGet]
+        public ActionResult SocialMediaAdd()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult SocialMediaAdd(TBLSOCIALMEDIA p)
+        {
+            repoSocialMedia.Add(p);
+            return RedirectToAction("UserSettings");
+        }
+
+        [HttpGet]
+        public ActionResult SocialMediaUpdate(byte id)
+        {
+            var values = repoSocialMedia.Find(x=> x.ID == id);  
+            return View(values);
+        }
+        [HttpPost]
+        public ActionResult SocialMediaUpdate(TBLSOCIALMEDIA p)
+        {
+            var values = repoSocialMedia.Find(x => x.ID == p.ID);
+            values.TITLE = p.TITLE;
+            values.URL = p.URL;
+            values.ACLASS = p.ACLASS;
+            values.ICLASS = p.ICLASS;
+            repoSocialMedia.Update(p);
+            return RedirectToAction("UserSettings");
+        }
+        public ActionResult SocialMediaDelete(TBLSOCIALMEDIA p)
+        {
+            var values = repoSocialMedia.Find(x => x.ID == p.ID);
+            repoSocialMedia.Delete(values);
+            return RedirectToAction("UserSettings");
         }
     }
 }
